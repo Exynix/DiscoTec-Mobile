@@ -13,6 +13,7 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var searchBtn: FloatingActionButton
     private lateinit var profileBtn: FloatingActionButton
     private lateinit var mapBtn: FloatingActionButton
+    private lateinit var reservasBtn: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,11 +24,26 @@ class DashboardActivity : AppCompatActivity() {
         searchBtn = binding.buscarBtn
         profileBtn = binding.perfilBtn
         mapBtn = binding.mapaBtn
+        reservasBtn = binding.reservasBtn
 
         searchBtn.setOnClickListener {
             val intent = Intent(applicationContext, SearchActivity::class.java)
             startActivity(intent)
         }
 
+        profileBtn.setOnClickListener {
+            val intent = Intent(applicationContext, PerfilActivity::class.java)
+            startActivity(intent)
+        }
+
+        mapBtn.setOnClickListener {
+            val intent = Intent(applicationContext, MiParcheActivity::class.java)
+            startActivity(intent)
+        }
+
+        reservasBtn.setOnClickListener {
+            val intent = Intent(applicationContext, ReservasActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

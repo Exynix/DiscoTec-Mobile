@@ -7,8 +7,8 @@
     tools:context=".DashboardActivity">
 
     <LinearLayout
-        android:layout_width="381dp"
-        android:layout_height="55dp"
+        android:layout_width="366dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="16dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Space
-            android:layout_width="46dp"
+            android:layout_width="25dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
@@ -43,6 +43,20 @@
             android:clickable="true"
             android:contentDescription="aaaaaaa"
             app:srcCompat="@android:drawable/ic_menu_search" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/reservasBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:contentDescription="aaaaa"
+            app:srcCompat="@android:drawable/ic_menu_call" />
 
         <Space
             android:layout_width="wrap_content"
