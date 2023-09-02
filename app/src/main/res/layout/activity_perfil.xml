@@ -36,7 +36,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05"></ImageView>
+        app:layout_constraintVertical_bias="0.08"></ImageView>
 
     <ImageView
         android:id="@+id/imageView2"
@@ -69,8 +69,10 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="28dp"
+        android:fontFamily="@font/poppins_semibold"
         android:text="Volver"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -82,14 +84,16 @@
         android:layout_height="wrap_content"
         android:background="#FA128B"
         android:backgroundTint="#FA128B"
+        android:fontFamily="@font/poppins_semibold"
         android:text="Ver mis reservas"
+        android:textSize="20sp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.642" />
+        app:layout_constraintVertical_bias="0.639" />
 
     <Button
         android:id="@+id/button6"
@@ -97,14 +101,16 @@
         android:layout_height="wrap_content"
         android:background="#FA128B"
         android:backgroundTint="#FA128B"
+        android:fontFamily="@font/poppins_semibold"
         android:text="Cerrar sesión"
+        android:textSize="20sp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.743" />
+        app:layout_constraintVertical_bias="0.732" />
 
     <Button
         android:id="@+id/button7"
@@ -112,12 +118,14 @@
         android:layout_height="wrap_content"
         android:background="#FA128B"
         android:backgroundTint="#FA128B"
+        android:fontFamily="@font/poppins_semibold"
         android:text="Eliminar cuenta"
+        android:textSize="20sp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.831" />
+        app:layout_constraintVertical_bias="0.824" />
 </androidx.constraintlayout.widget.ConstraintLayout>
