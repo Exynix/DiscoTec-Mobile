@@ -2,6 +2,5 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/bungee_shade</item>
-        <item>@font/poppins</item>
     </array>
 </resources>

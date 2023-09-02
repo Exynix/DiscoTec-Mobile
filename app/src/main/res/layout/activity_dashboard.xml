@@ -33,7 +33,8 @@
             android:clickable="true"
             android:contentDescription="aaaa"
             android:src="@android:drawable/ic_input_add"
-            app:layout_constraintStart_toEndOf="@+id/space" />
+            app:layout_constraintStart_toEndOf="@+id/space"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Space
             android:id="@+id/space2"
