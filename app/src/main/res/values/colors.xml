@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="fucsia">#FA128B</color>
+    <color name="azulClaro">#30FFFF</color>
+    <color name="moradoPrincipal">#B73ECE</color>
+    <color name="backgroundMorado">#2F0040</color>
+    <color name="backgroundMoradoPrincipal">#530064</color>
 </resources>
