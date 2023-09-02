@@ -147,7 +147,7 @@
 
         <EditText
             android:layout_width="280dp"
-            android:layout_height="30dp"
+            android:layout_height="48dp"
             android:background="#B73ECE"
             android:focusableInTouchMode="false"
             android:text="   Ingrese su nuevo nombre de usuario"
