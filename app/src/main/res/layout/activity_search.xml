@@ -2,32 +2,307 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/inicioSesion"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD:app/src/main/res/layout/activity_main.xml
-    tools:context=".MainActivity"/>
-=======
-    tools:context=".SearchActivity">
+    tools:context=".DashboardActivity"
+    android:background="@color/backgroundMorado">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="366dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="19dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.355"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/paginaPrinciBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:contentDescription="aaaa"
+            android:src="@android:drawable/ic_input_add"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/buscarBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            android:clickable="true"
+            android:contentDescription="aaaaaaa"
+            app:layout_constraintStart_toEndOf="@+id/paginaPrinciBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_search" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/reservasBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:clickable="true"
+            android:contentDescription="aaaaa"
+            app:layout_constraintStart_toEndOf="@+id/buscarBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_call" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/mapaBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:clickable="true"
+            android:contentDescription="aaaaaaaaa"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/reservasBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.75"
+            app:srcCompat="@android:drawable/ic_dialog_map" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/perfilBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:clickable="true"
+            android:contentDescription="aaaaaaa"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.516"
+            app:layout_constraintStart_toEndOf="@+id/mapaBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_info_details" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="46dp"
+            tools:layout_editor_absoluteY="-41dp">
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    <SearchView
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.697"
+        color/>
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search page"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:text="Busquedas más frecuentes"
+        android:textColor="@color/moradoPrincipal"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.19"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.121" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="150dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="28dp"
+        android:background="@color/backgroundMorado"
+        app:cardCornerRadius="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        android:margin>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/black">
+
+            <ImageView
+                android:id="@+id/imgViewCard1"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:scaleType="center"
+                android:src="@drawable/theatron1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/imgViewCard1"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="-3dp"
+                android:layout_marginTop="4dp"
+                android:paddingLeft="10dp"
+                android:text="Theatron"
+                android:textColor="@color/fucsia"
+                app:layout_constraintTop_toBottomOf="@+id/imgViewCard1" />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
+        android:layout_width="150dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="28dp"
+        android:background="@color/backgroundMorado"
+        app:cardCornerRadius="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintStart_toEndOf="@+id/cardView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        android:layout_marginLeft="20dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/black">
+
+            <ImageView
+                android:id="@+id/imgViewCard2"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:scaleType="center"
+                android:src="@drawable/palenque1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="2dp"
+                android:layout_marginBottom="7dp"
+                android:paddingLeft="10dp"
+                android:text="Palenque"
+                android:textColor="@color/fucsia"
+                app:layout_constraintTop_toBottomOf="@+id/imgViewCard2" />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView4"
+        android:layout_width="150dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="100dp"
+        android:background="@color/backgroundMorado"
+        app:cardCornerRadius="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/black">
+
+            <ImageView
+                android:id="@+id/imgViewCard3"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:scaleType="center"
+                android:src="@drawable/theatron1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/imgViewCard3"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="-3dp"
+                android:layout_marginTop="4dp"
+                android:paddingLeft="10dp"
+                android:text="Theatron"
+                android:textColor="@color/fucsia"
+                app:layout_constraintTop_toBottomOf="@+id/imgViewCard3" />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView5"
+        android:layout_width="150dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="20dp"
+        android:background="@color/backgroundMorado"
+        app:cardCornerRadius="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintStart_toEndOf="@+id/cardView2"
+        app:layout_constraintTop_toBottomOf="@+id/cardView3"
+        android:layout_marginTop="100dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/black">
+
+            <ImageView
+                android:id="@+id/imgViewCard5"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:scaleType="center"
+                android:src="@drawable/palenque1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="2dp"
+                android:layout_marginBottom="7dp"
+                android:paddingLeft="10dp"
+                android:text="Palenque"
+                android:textColor="@color/fucsia"
+                app:layout_constraintTop_toBottomOf="@+id/imgViewCard5" />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="156dp"
-        android:text="Volver"
+        android:background="@color/backgroundNavBar"
+        android:theme="@style/Theme.App"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_menu"
+        android:visibility="gone"/>
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
->>>>>>> fab4d4559a3174ca7a23fd9650accef2978c65bb:app/src/main/res/layout/activity_search.xml
