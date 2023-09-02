@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="aceptar">Aceptar</string>
+    <string name="DiscoTecTitle">Disco-Tec</string>
 </resources>
