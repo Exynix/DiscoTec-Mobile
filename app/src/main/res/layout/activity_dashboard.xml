@@ -260,6 +260,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12">
 
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+
+            android:scaleType="center"
+            android:src="@drawable/palenque1" />
+
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -271,7 +278,14 @@
 
         app:cardCornerRadius="16sp"
         app:layout_constraintStart_toEndOf="@+id/cardView3"
+
         app:layout_constraintTop_toBottomOf="@+id/textView12">
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+
+            android:scaleType="center"
+            android:src="@drawable/theatron1" />
 
     </androidx.cardview.widget.CardView>
 
