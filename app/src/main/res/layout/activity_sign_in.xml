@@ -4,39 +4,148 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#360041"
+    android:backgroundTint="#360041"
     tools:context=".SignInActivity">
 
     <Button
         android:id="@+id/backToLoginBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="back to login"
+        android:text="Login"
+        android:fontFamily="@font/Poppins_Bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.374" />
-
-    <Button
-        android:id="@+id/createAccountBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:text="create account"
-        app:layout_constraintEnd_toEndOf="@+id/backToLoginBtn"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="@+id/backToLoginBtn"
-        app:layout_constraintTop_toBottomOf="@+id/backToLoginBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.05" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SignIn page"
+        android:fontFamily="@font/Poppins_Bold"
+        android:text="Disco Tec"
+        android:textColor="#FF47A5"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.058" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="130dp"
+        android:layout_height="108dp"
+        android:layout_marginTop="33dp"
+        android:src="@drawable/logodisco"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.057" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0"></ImageView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/createAccountBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backToLoginBtn"
+        app:layout_constraintVertical_bias="0.145">
+
+        <EditText
+            android:layout_width="280dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="#B73ECE"
+            android:focusableInTouchMode="false"
+            android:fontFamily="@font/poppins"
+            android:text="Ingrese su número de teléfono"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp"></EditText>
+
+        <EditText
+            android:layout_width="280dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="#B73ECE"
+            android:focusableInTouchMode="false"
+            android:fontFamily="@font/poppins"
+            android:text="Ingrese su contraseña"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp"></EditText>
+
+        <EditText
+            android:layout_width="280dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="#B73ECE"
+            android:focusableInTouchMode="false"
+            android:fontFamily="@font/poppins"
+            android:text="Ingrese su nombre completo"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp"></EditText>
+
+        <EditText
+            android:layout_width="280dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="#B73ECE"
+            android:focusableInTouchMode="false"
+            android:fontFamily="@font/poppins"
+            android:text="Ingrese su apellido"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp"></EditText>
+
+        <EditText
+            android:layout_width="280dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="#B73ECE"
+            android:focusableInTouchMode="false"
+            android:fontFamily="@font/poppins"
+            android:text="Ingrese su número de cédula"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="15sp"></EditText>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Escanea tu cédula"
+        android:fontFamily="@font/poppins"
+        app:layout_constraintBottom_toTopOf="@+id/createAccountBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.264"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.51" />
+
+    <Button
+        android:id="@+id/createAccountBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="384dp"
+        android:fontFamily="@font/Poppins_Bold"
+        android:text="Crear Cuenta"
+        app:layout_constraintEnd_toEndOf="@+id/backToLoginBtn"
+        app:layout_constraintHorizontal_bias="0.355"
+        app:layout_constraintStart_toStartOf="@+id/backToLoginBtn"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
