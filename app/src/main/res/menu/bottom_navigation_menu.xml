@@ -9,7 +9,7 @@
 
 
     <item
-        android:id="navBuscar"
+        android:id="@+id/navBuscar"
         android:enabled="true"
         android:icon="@drawable/baseline_location_searching_24"
         android:title="Buscar"/>

@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         signInBtn = binding.signInBtn
 
         loginBtn.setOnClickListener {
+
             val intent = Intent(applicationContext, DashboardActivity::class.java)
             startActivity(intent)
         }
