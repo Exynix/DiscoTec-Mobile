@@ -18,7 +18,7 @@
         app:layout_constraintVertical_bias="0.112" />
 
     <Button
-        android:id="@+id/signIn"
+        android:id="@+id/signInBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SignIn"
@@ -29,14 +29,14 @@
         app:layout_constraintVertical_bias="0.345" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/loginBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="116dp"
         android:text="Login"
-        app:layout_constraintEnd_toEndOf="@+id/signIn"
+        app:layout_constraintEnd_toEndOf="@+id/signInBtn"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/signIn"
-        app:layout_constraintTop_toBottomOf="@+id/signIn" />
+        app:layout_constraintStart_toStartOf="@+id/signInBtn"
+        app:layout_constraintTop_toBottomOf="@+id/signInBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

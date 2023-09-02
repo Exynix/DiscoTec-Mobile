@@ -7,7 +7,7 @@
     tools:context=".SignInActivity">
 
     <Button
-        android:id="@+id/backtoLogin"
+        android:id="@+id/backToLoginBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="back to login"
@@ -18,15 +18,15 @@
         app:layout_constraintVertical_bias="0.374" />
 
     <Button
-        android:id="@+id/createAccount"
+        android:id="@+id/createAccountBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="128dp"
         android:text="create account"
-        app:layout_constraintEnd_toEndOf="@+id/backtoLogin"
+        app:layout_constraintEnd_toEndOf="@+id/backToLoginBtn"
         app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="@+id/backtoLogin"
-        app:layout_constraintTop_toBottomOf="@+id/backtoLogin" />
+        app:layout_constraintStart_toStartOf="@+id/backToLoginBtn"
+        app:layout_constraintTop_toBottomOf="@+id/backToLoginBtn" />
 
     <TextView
         android:id="@+id/textView"
