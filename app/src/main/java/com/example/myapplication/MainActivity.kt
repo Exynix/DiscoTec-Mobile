@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var loginBtn: Button
     private lateinit var signInBtn: Button
-    private lateinit var userInput: TextInputEditText
+    private lateinit var emailInput: TextInputEditText
     private lateinit var passInput: TextInputEditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,11 +36,11 @@ class MainActivity : AppCompatActivity() {
 
         loginBtn = binding.loginBtn
         signInBtn = binding.switchAuth
-        userInput = binding.emailInput
+        emailInput = binding.emailInput
         passInput = binding.passwordInput
 
         loginBtn.setOnClickListener {
-            val email: String = userInput.text.toString().trim()
+            val email: String = emailInput.text.toString().trim()
             val password: String = passInput.text.toString().trim()
             Log.i("MainActivity", "Email: $email")
             Log.i("MainActivity", "Password: $password")
@@ -65,26 +65,26 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("user", currentUser.email)
             startActivity(intent)
         } else {
-            userInput.setText("")
+            emailInput.setText("")
             passInput.setText("")
         }
     }
 
     private fun validateForm(): Boolean {
         var valid = true
-        val email: String = userInput.text.toString()
+        val email: String = emailInput.text.toString()
         if (TextUtils.isEmpty(email)) {
-            userInput.error = "Required"
+            emailInput.error = "Required"
             valid = false
         } else {
-            userInput.error = null
+            emailInput.error = null
         }
-        val password: String = userInput.text.toString()
+        val password: String = emailInput.text.toString()
         if (TextUtils.isEmpty(password)) {
-            userInput.error = "Required"
+            emailInput.error = "Required"
             valid = false
         } else {
-            userInput.error = null
+            emailInput.error = null
         }
         return valid
     }
