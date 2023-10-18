@@ -1,14 +1,17 @@
 package com.example.myapplication
 
+import android.content.ContentValues.TAG
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
-import android.widget.EditText
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -32,20 +35,73 @@ class MainActivity : AppCompatActivity() {
         mAuth = Firebase.auth
 
         loginBtn = binding.loginBtn
-        signInBtn = binding.signInBtn
+        signInBtn = binding.switchAuth
         userInput = binding.input0
         passInput = binding.input1
 
         loginBtn.setOnClickListener {
-            if (userInput.text.toString().trim() != "" && passInput.text.toString().trim() != "") {
-                val intent = Intent(applicationContext, DashboardActivity::class.java)
-                startActivity(intent)
-            }
+            val email: String = userInput.text.toString()
+            val password: String = passInput.text.toString()
+            signInUser(email, password)
         }
 
         signInBtn.setOnClickListener {
             val intent = Intent(applicationContext, SignInActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val currentUser = mAuth.currentUser
+        updateUI(currentUser)
+    }
+    private fun updateUI(currentUser: FirebaseUser?) {
+        if (currentUser != null) {
+            val intent = Intent(baseContext,
+                DashboardActivity::class.java)
+            intent.putExtra("user", currentUser.email)
+            startActivity(intent)
+        } else {
+            userInput.setText("")
+            passInput.setText("")
+        }
+    }
+
+    private fun validateForm(): Boolean {
+        var valid = true
+        val email: String = userInput.text.toString()
+        if (TextUtils.isEmpty(email)) {
+            userInput.error = "Required"
+            valid = false
+        } else {
+            userInput.error = null
+        }
+        val password: String = userInput.text.toString()
+        if (TextUtils.isEmpty(password)) {
+            userInput.error = "Required"
+            valid = false
+        } else {
+            userInput.error = null
+        }
+        return valid
+    }
+
+    private fun signInUser(email: String, password: String) {
+        if (validateForm()) {
+            mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        Log.d(TAG, "signInWithEmail: Success")
+                        val user = mAuth.currentUser
+                        updateUI(user)
+                    } else {
+                        Log.w(TAG, "signInWithEmail: Failure", task.exception)
+                        Toast.makeText(this@MainActivity, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show()
+                        updateUI(null)
+                    }
+                }
         }
     }
 }
