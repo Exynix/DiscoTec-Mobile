@@ -8,10 +8,15 @@ import android.widget.EditText
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    private lateinit var mAuth: FirebaseAuth
 
     private lateinit var loginBtn: Button
     private lateinit var signInBtn: Button
@@ -23,6 +28,8 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        mAuth = Firebase.auth
 
         loginBtn = binding.loginBtn
         signInBtn = binding.signInBtn
