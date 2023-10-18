@@ -80,22 +80,7 @@
         app:layout_constraintVertical_bias="0.835" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="220dp"
-        android:layout_height="57dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText3"
-        app:layout_constraintEnd_toEndOf="@+id/editText3"
-        app:layout_constraintStart_toStartOf="@+id/editText3"
-        app:layout_constraintTop_toTopOf="@+id/editText3">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input0"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Ingrese la contraseña" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/TextInputLayout1"
         android:layout_width="211dp"
         android:layout_height="56dp"
         app:layout_constraintBottom_toBottomOf="@+id/editText2"
@@ -104,10 +89,25 @@
         app:layout_constraintTop_toTopOf="@+id/editText2">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input1"
+            android:id="@+id/emailInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ingrese su Usuario" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="220dp"
+        android:layout_height="57dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText3"
+        app:layout_constraintEnd_toEndOf="@+id/editText3"
+        app:layout_constraintStart_toStartOf="@+id/editText3"
+        app:layout_constraintTop_toTopOf="@+id/editText3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese la contraseña" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Switch

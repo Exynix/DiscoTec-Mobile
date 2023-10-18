@@ -36,12 +36,14 @@ class MainActivity : AppCompatActivity() {
 
         loginBtn = binding.loginBtn
         signInBtn = binding.switchAuth
-        userInput = binding.input0
-        passInput = binding.input1
+        userInput = binding.emailInput
+        passInput = binding.passwordInput
 
         loginBtn.setOnClickListener {
-            val email: String = userInput.text.toString()
-            val password: String = passInput.text.toString()
+            val email: String = userInput.text.toString().trim()
+            val password: String = passInput.text.toString().trim()
+            Log.i("MainActivity", "Email: $email")
+            Log.i("MainActivity", "Password: $password")
             signInUser(email, password)
         }
 
