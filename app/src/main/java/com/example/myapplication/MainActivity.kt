@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
-import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -22,9 +22,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
 
     private lateinit var loginBtn: Button
-    private lateinit var signInBtn: Button
-    private lateinit var emailInput: TextInputEditText
-    private lateinit var passInput: TextInputEditText
+    private lateinit var signUpBtn: Button
+    private lateinit var emailInput: EditText
+    private lateinit var passInput: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,20 +35,18 @@ class MainActivity : AppCompatActivity() {
         mAuth = Firebase.auth
 
         loginBtn = binding.loginBtn
-        signInBtn = binding.switchAuth
+        signUpBtn = binding.gotoSignUpBtn
         emailInput = binding.emailInput
         passInput = binding.passwordInput
 
         loginBtn.setOnClickListener {
             val email: String = emailInput.text.toString().trim()
             val password: String = passInput.text.toString().trim()
-            Log.i("MainActivity", "Email: $email")
-            Log.i("MainActivity", "Password: $password")
             signInUser(email, password)
         }
 
-        signInBtn.setOnClickListener {
-            val intent = Intent(applicationContext, SignInActivity::class.java)
+        signUpBtn.setOnClickListener {
+            val intent = Intent(applicationContext, SignUpActivity::class.java)
             startActivity(intent)
         }
     }
@@ -58,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         val currentUser = mAuth.currentUser
         updateUI(currentUser)
     }
+
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null) {
             val intent = Intent(baseContext,
@@ -79,12 +78,12 @@ class MainActivity : AppCompatActivity() {
         } else {
             emailInput.error = null
         }
-        val password: String = emailInput.text.toString()
+        val password: String = passInput.text.toString()
         if (TextUtils.isEmpty(password)) {
-            emailInput.error = "Required"
+            passInput.error = "Required"
             valid = false
         } else {
-            emailInput.error = null
+            passInput.error = null
         }
         return valid
     }

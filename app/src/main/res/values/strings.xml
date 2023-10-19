@@ -1,6 +1,11 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">DISCO-TEC</string>
     <string name="aceptar">Aceptar</string>
     <string name="DiscoTecTitle">Disco-Tec</string>
+    <string name="hint_password">Ingrese su contraseña</string>
+    <string name="login">Login</string>
+    <string name="signup">Signup</string>
+    <string name="hint_email">Ingrese su correo</string>
+    <string name="logo_principal">logo discotec</string>
     <string name="title_activity_maps">MapsActivity</string>
 </resources>
