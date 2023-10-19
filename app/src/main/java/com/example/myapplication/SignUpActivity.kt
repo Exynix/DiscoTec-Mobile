@@ -3,11 +3,11 @@ package com.example.myapplication
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import com.example.myapplication.databinding.ActivitySignInBinding
+import com.example.myapplication.databinding.ActivitySignUpBinding
 
-class SignInActivity : AppCompatActivity() {
+class SignUpActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivitySignInBinding
+    private lateinit var binding: ActivitySignUpBinding
 
     private lateinit var loginBtn: Button
     private lateinit var signInBtn: Button
@@ -15,7 +15,7 @@ class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivitySignInBinding.inflate(layoutInflater)
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         loginBtn = binding.backToLoginBtn
