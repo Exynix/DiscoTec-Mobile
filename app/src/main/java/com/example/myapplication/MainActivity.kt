@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         mAuth = Firebase.auth
 
         loginBtn = binding.loginBtn
-        signUpBtn = binding.Signup
+        signUpBtn = binding.gotoSignUpBtn
         emailInput = binding.emailInput
         passInput = binding.passwordInput
 
@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         val currentUser = mAuth.currentUser
         updateUI(currentUser)
     }
+
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null) {
             val intent = Intent(baseContext,

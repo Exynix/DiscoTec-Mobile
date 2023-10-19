@@ -4,138 +4,160 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#360041"
-    android:backgroundTint="#360041"
+    android:background="#1E1E1E"
     tools:context=".SignUpActivity">
 
-    <Button
-        android:id="@+id/backToLoginBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.05" />
-
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Disco Tec"
+        android:fontFamily="@font/poppins"
+        android:text="@string/app_name"
         android:textColor="#FF47A5"
-        android:textSize="50sp"
+        android:textSize="52sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.058" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="130dp"
-        android:layout_height="108dp"
-        android:layout_marginTop="33dp"
-        android:src="@drawable/logodisco"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.0"></ImageView>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/createAccountBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backToLoginBtn"
-        app:layout_constraintVertical_bias="0.145">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.105" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="10dp"
-            android:background="#B73ECE"
-            android:focusableInTouchMode="false"
-            android:text="Ingrese su número de teléfono"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="15sp"></EditText>
-
-        <EditText
-            android:layout_width="280dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="10dp"
-            android:background="#B73ECE"
-            android:focusableInTouchMode="false"
-            android:text="Ingrese su contraseña"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="15sp"></EditText>
-
-        <EditText
-            android:layout_width="280dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="10dp"
-            android:background="#B73ECE"
-            android:focusableInTouchMode="false"
-            android:text="Ingrese su nombre completo"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="15sp"></EditText>
-
-        <EditText
-            android:layout_width="280dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="10dp"
-            android:background="#B73ECE"
-            android:focusableInTouchMode="false"
-            android:text="Ingrese su apellido"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="15sp"></EditText>
-
-        <EditText
-            android:layout_width="280dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="10dp"
-            android:background="#B73ECE"
-            android:focusableInTouchMode="false"
-            android:text="Ingrese su número de cédula"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="15sp"></EditText>
-
-    </LinearLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Escanea tu cédula"
-        app:layout_constraintBottom_toTopOf="@+id/createAccountBtn"
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="150dp"
+        android:layout_height="123dp"
+        android:src="@drawable/logo_principal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:contentDescription="@string/logo_principal" />
 
-    <Button
-        android:id="@+id/createAccountBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="420dp"
-        android:text="Crear Cuenta"
-        app:layout_constraintEnd_toEndOf="@+id/backToLoginBtn"
-        app:layout_constraintHorizontal_bias="0.477"
-        app:layout_constraintStart_toStartOf="@+id/backToLoginBtn"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="317dp"
+        android:layout_height="412dp"
+        android:background="@drawable/rounded_container"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10"
+        app:layout_constraintVertical_bias="0.238">
 
+        <LinearLayout
+            android:layout_width="271dp"
+            android:layout_height="52dp"
+            android:background="@drawable/rounded_rectangle"
+            android:orientation="horizontal"
+            android:padding="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/gotoLoginBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/transparent"
+                android:fontFamily="@font/poppins"
+                android:text="@string/login"
+                android:textColor="@color/fucsia" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@color/fucsia"
+                android:fontFamily="@font/poppins"
+                android:text="@string/signup" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="256dp"
+            android:layout_height="187dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/emailInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:background="@android:color/holo_purple"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/hint_email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:textColorHint="@android:color/darker_gray" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5" />
+
+            <EditText
+                android:id="@+id/passwordInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:background="@android:color/holo_purple"
+                android:drawableStart="@drawable/ic_lock"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:textColorHint="@android:color/darker_gray" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5" />
+
+            <EditText
+                android:id="@+id/cedulaInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:background="@android:color/holo_purple"
+                android:drawableStart="@drawable/ic_cedula"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:fontFamily="@font/poppins"
+                android:hint="Ingrese su cédula"
+                android:inputType="number"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:textColorHint="@android:color/darker_gray" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/signUpBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signup"
+            android:fontFamily="@font/poppins"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
