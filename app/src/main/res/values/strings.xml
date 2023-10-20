@@ -8,4 +8,19 @@
     <string name="hint_email">correo</string>
     <string name="logo_principal">logo discotec</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="editar_perfil">editar perfil</string>
+    <string name="notificaciones">notificaciones</string>
+    <string name="privacidad_y_seguridad">privacidad y seguridad</string>
+    <string name="preferencias">preferencias</string>
+    <string name="centro_de_ayuda">centro de ayuda</string>
+    <string name="icono_ajustes">icono ajustes</string>
+    <string name="ajustes">ajustes</string>
+    <string name="boton_de_busqueda">boton de busqueda</string>
+    <string name="buscar_discoteca">buscar discoteca</string>
+    <string name="campo_foto_perfil">campo foto de perfil</string>
+    <string name="barra_estetica">barra estatica</string>
+    <string name="foto_de_perfil">foto de perfil</string>
+    <string name="pepito_lozano">pepito lozano</string>
+    <string name="cerrar_sesi_n">cerrar sesión</string>
+    <string name="eliminar_cuenta">eliminar cuenta</string>
 </resources>

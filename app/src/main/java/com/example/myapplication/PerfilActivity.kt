@@ -17,7 +17,7 @@ class PerfilActivity : AppCompatActivity() {
 
         binding.ajustes.setOnClickListener{
             // Intent hacia ajustes
-            val intent = Intent(applicationContext, Ajustes::class.java)
+            val intent = Intent(applicationContext, AjustesActivity::class.java)
             startActivity(intent)
         }
 
