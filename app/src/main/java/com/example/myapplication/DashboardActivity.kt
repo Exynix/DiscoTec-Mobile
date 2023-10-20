@@ -26,7 +26,7 @@ class DashboardActivity : AppCompatActivity() {
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mAuth = Firebase.authgi
+        mAuth = Firebase.auth
 
         searchBtn = binding.buscarBtn
         profileBtn = binding.perfilBtn
