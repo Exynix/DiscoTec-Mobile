@@ -8,4 +8,12 @@
     <string name="hint_email">Ingrese su correo</string>
     <string name="logo_principal">logo discotec</string>
     <string name="title_activity_maps">MapsActivity</string>
+
+    <!-- Nav bar strings -->
+    <string name="navbar_home">Explorar</string>
+    <string name="navbar_search">Buscar</string>
+    <string name="navbar_bookings">Reservas</string>
+    <string name="navbar_parches">Mis Parches</string>
+    <string name="navbar_profile">Perfil</string>
+
 </resources>

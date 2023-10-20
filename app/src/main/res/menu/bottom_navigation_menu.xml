@@ -5,32 +5,34 @@
         android:id="@+id/navExplorar"
         android:enabled="true"
         android:icon="@drawable/baseline_home_work_24"
-        android:title="Explorar"/>
+        android:title="@string/navbar_home"/>
 
 
     <item
         android:id="@+id/navBuscar"
         android:enabled="true"
         android:icon="@drawable/baseline_location_searching_24"
-        android:title="Buscar"/>
+        android:title="@string/navbar_search"/>
 
     <item
         android:id="@+id/navReservas"
         android:enabled="true"
         android:icon="@drawable/baseline_bento_24"
-        android:title="Reservas"/>
+        android:title="@string/navbar_bookings"/>
 
 
     <item
-        android:title="Mi Parche"
-        android:icon="@drawable/baseline_groups_3_24"
+        android:id="@+id/navMiParche"
         android:enabled="true"
-        android:id="@+id/navMiParche"/>
+        android:icon="@drawable/baseline_groups_3_24"
+        android:title="@string/navbar_parches"
+    />
+
 
     <item
         android:id="@+id/navPerfil"
         android:enabled="true"
         android:icon="@drawable/baseline_account_circle_24"
-        android:title="Perfil"/>
+        android:title="@string/navbar_profile"/>
 
 </menu>
