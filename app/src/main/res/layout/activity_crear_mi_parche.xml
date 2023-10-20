@@ -18,12 +18,12 @@
 
     <ImageButton
         android:id="@+id/camera"
-        android:layout_width="33dp"
-        android:layout_height="32dp"
+        android:layout_width="49dp"
+        android:layout_height="36dp"
         android:background="#00FFFFFF"
-        android:src="@android:drawable/ic_menu_camera"
-        tools:layout_editor_absoluteX="142dp"
-        tools:layout_editor_absoluteY="230dp" />
+        android:src="@drawable/camara"
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="226dp" />
 
     <ImageButton
         android:id="@+id/gallery"
