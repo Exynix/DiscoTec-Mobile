@@ -44,7 +44,7 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         mapBtn.setOnClickListener {
-            val intent = Intent(applicationContext, MiParcheActivity::class.java)
+            val intent = Intent(applicationContext, MapsActivity::class.java)
             startActivity(intent)
         }
 

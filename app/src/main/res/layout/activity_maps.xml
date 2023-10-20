@@ -29,36 +29,34 @@
 
         <LinearLayout
             android:layout_width="310dp"
-            android:layout_height="70dp"
-            android:gravity="center_vertical"
-            android:background="@drawable/roundedbox1">
+            android:layout_height="60dp"
+            android:background="@drawable/roundedbox1"
+            android:gravity="center_vertical">
+
 
             <ImageButton
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_margin="10dp"
                 android:backgroundTint="#D3D3D3"
+                android:bottomLeftRadius="10dp"
+                android:bottomRightRadius="10dp"
+                android:contentDescription="@string/boton_de_busqueda"
+                android:onClick="search"
                 android:scaleType="centerInside"
                 android:src="@drawable/lupa"
-                android:onClick="search"
-                android:layout_margin="10dp"
-                tools:ignore="OnClick"
-                android:bottomRightRadius="10dp"
-                android:bottomLeftRadius="10dp"
                 android:topLeftRadius="10dp"
-                android:topRightRadius="10dp"/>
+                android:topRightRadius="10dp"
+                tools:ignore="OnClick" />
 
-            <EditText
+            <TextView
                 android:id="@+id/address"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.70"
-                android:hint="Buscar Discoteca"
-                android:imeOptions="actionSend"
-                android:inputType="text"
                 android:layout_margin="10dp"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:layout_weight="0.70"
+                android:hint="@string/buscar_discoteca"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -66,11 +64,23 @@
             android:id="@+id/imageButton1"
             android:layout_width="63dp"
             android:layout_height="64dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
+            android:layout_margin="8dp"
             android:background="@drawable/round_button"
-            android:layout_margin="8dp"/>
+            android:contentDescription="@string/campo_foto_perfil" />
 
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="310dp"
+        android:layout_height="49dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/barramini"
+        map:layout_constraintBottom_toBottomOf="@+id/map"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintHorizontal_bias="0.498"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="parent"
+        map:layout_constraintVertical_bias="0.875"
+        android:contentDescription="@string/barra_estetica"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

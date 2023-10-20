@@ -1,15 +1,13 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import com.example.myapplication.databinding.ActivityPerfilBinding
 
 class PerfilActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPerfilBinding
-
-    private lateinit var volverBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,10 +15,18 @@ class PerfilActivity : AppCompatActivity() {
         binding = ActivityPerfilBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        volverBtn = binding.button2
+        binding.ajustes.setOnClickListener{
+            // Intent hacia ajustes
+            val intent = Intent(applicationContext, Ajustes::class.java)
+            startActivity(intent)
+        }
 
-        volverBtn.setOnClickListener {
-            finish()
+        binding.cerrarSesion.setOnClickListener{
+
+        }
+
+        binding.EliminarCuenta.setOnClickListener {
+
         }
     }
 }
