@@ -4,10 +4,23 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
+import android.location.Geocoder
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 
@@ -25,9 +38,14 @@ import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.Polyline
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.io.IOException
 import java.util.logging.Logger
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -41,6 +59,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+    private lateinit var mGeocoder: Geocoder
+    lateinit var mAddress: EditText
+    lateinit var sensorManager: SensorManager
+    lateinit var lightSensor: Sensor
+    lateinit var lightSensorListener: SensorEventListener
     // Añade una variable para controlar si el mapa está listo
     private var isMapReady = false
     // Para crear la ruta entre dos puntos
@@ -64,6 +87,67 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        mAddress = binding.address
+        mAddress.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEND) {
+                findAddress()
+            }
+            false
+        }
+
+        // Initialize the sensors
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)!!
+
+        // Initialize the listener
+        lightSensorListener = object : SensorEventListener {
+            override fun onSensorChanged(event: SensorEvent) {
+                if (mMap != null) {
+                    if (event.values[0] < 5000) {
+                        Log.i("MAPS", "DARK MAP " + event.values[0])
+                        mMap.setMapStyle(
+                            MapStyleOptions.loadRawResourceStyle(
+                                this@MapsActivity,
+                                R.raw.style_night
+                            )
+                        )
+                    } else {
+                        Log.i("MAPS", "LIGHT MAP " + event.values[0])
+                        mMap.setMapStyle(
+                            MapStyleOptions.loadRawResourceStyle(
+                                this@MapsActivity,
+                                R.raw.style_day_retro
+                            )
+                        )
+                    }
+                }
+            }
+
+            override fun onAccuracyChanged(sensor: Sensor, i: Int) {}
+        }
+        // Initialize the geocoder
+        mGeocoder = Geocoder(baseContext)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if(isMapReady)
+        {
+            sensorManager.registerListener(
+                lightSensorListener,
+                lightSensor,
+                SensorManager.SENSOR_DELAY_NORMAL
+            )
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if(isMapReady)
+        {
+            sensorManager.unregisterListener(lightSensorListener)
+        }
     }
 
     /**
@@ -85,6 +169,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.uiSettings.isMapToolbarEnabled = true
 
         verifyPermissions(this, android.Manifest.permission.ACCESS_FINE_LOCATION, "El permiso es requerido para poder mostrar tu ubicación en el mapa")
+
+        if(isMapReady)
+        {
+            sensorManager.registerListener(
+                lightSensorListener,
+                lightSensor,
+                SensorManager.SENSOR_DELAY_NORMAL
+            )
+        }
     }
 
     // ----------------- PERMISOS ----------------------------------------------------------------------------
@@ -113,6 +206,62 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+    fun search(view: View?) {
+        findAddress()
+    }
+
+
+    private fun findAddress() {
+        val addressString = mAddress.text.toString()
+        if (addressString.isNotEmpty()) {
+            try {
+                val addresses = mGeocoder.getFromLocationName(
+                    addressString, 3
+                )
+                if (addresses != null && !addresses.isEmpty()) {
+                    val addressResult = addresses[0]
+                    val position = LatLng(addressResult.latitude, addressResult.longitude)
+
+                    end = ""
+                    poly?.remove()
+                    if(poly!=null){
+                        poly = null
+                    }
+                    Toast.makeText(this,"Selecciona punto de destino", Toast.LENGTH_SHORT).show()
+
+                    if(start.isNotEmpty())
+                    {
+                        end = "${position.longitude},${position.latitude}"
+                        crateRouteBetween()
+                    }
+
+                    // Se crea la ruta hacia el lugar que se busca
+                    mMap.addMarker(
+                        MarkerOptions().position(position)
+                            .title(addressResult.featureName)
+                            .snippet(addressResult.getAddressLine(0))
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+                    )
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15f))
+
+
+                    //mMap.moveCamera(CameraUpdateFactory.newLatLng(position))
+                } else {
+                    Toast.makeText(
+                        this@MapsActivity,
+                        "Dirección no encontrada",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        } else {
+            Toast.makeText(this@MapsActivity, "La dirección está vacía", Toast.LENGTH_SHORT)
+                .show()
+        }
+    }
+
     @SuppressLint("MissingPermission")
     fun updateUI(permission: Boolean) {
         if (permission) {
@@ -129,9 +278,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 if (location != null) {
                     val ubicacion = LatLng(location.latitude, location.longitude)
 
-                    // Añadir un marcador personalizado
+                    // Cargar la imagen del marcador personalizado
                     val b = BitmapFactory.decodeResource(resources, R.drawable.boladisco)
-                    val smallMarker = Bitmap.createScaledBitmap(b, 200, 200, false)
+
+                    // Definir el tamaño fijo que deseas para el marcador (en píxeles)
+                    val width = 100
+                    val height = 100
+
+                    // Escalar la imagen al tamaño deseado
+                    val smallMarker = Bitmap.createScaledBitmap(b, width, height, false)
+
+                    // Agregar el marcador al mapa con el icono personalizado y tamaño fijo
                     mMap.addMarker(
                         MarkerOptions().position(ubicacion)
                             .title("Marker in my actual position ${location.latitude} ${location.longitude}")
@@ -187,4 +344,36 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             logger.warning("Permission denied")
         }
     }
+
+    private fun crateRouteBetween() {
+        CoroutineScope(Dispatchers.IO).launch{
+            val call = getRetrofit().create(ApiService::class.java)
+                .getRoute("5b3ce3597851110001cf6248cbef574c40e34749865dc70189b066a8", start, end)
+            if(call.isSuccessful)
+            {
+                drawRoute(call.body())
+                call.body()
+            } else {
+                Log.i("lau",":( MAL")
+            }
+        }
+    }
+
+    private fun drawRoute(routeResponse: RouteResponse?) {
+        val polylineOptions = PolylineOptions()
+        routeResponse?.features?.first()?.geometry?.coordinates?.forEach{
+            polylineOptions.add(LatLng(it[1],it[0]))
+                .color(Color.RED)
+        }
+        runOnUiThread{
+            poly = mMap.addPolyline(polylineOptions)
+        }
+    }
+
+    private fun getRetrofit():Retrofit{
+        return Retrofit.Builder().baseUrl("https://api.openrouteservice.org/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
 }

@@ -49,14 +49,17 @@
                 android:topRightRadius="10dp"
                 tools:ignore="OnClick" />
 
-            <TextView
+            <EditText
                 android:id="@+id/address"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:layout_weight="0.70"
-                android:hint="@string/buscar_discoteca"
-                android:textSize="18sp" />
+                android:hint="Buscar Discoteca"
+                android:imeOptions="actionSend"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
