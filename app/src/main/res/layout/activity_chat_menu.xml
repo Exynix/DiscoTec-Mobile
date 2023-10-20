@@ -82,7 +82,7 @@
             android:layout_marginTop="16dp"
             android:backgroundTint="#E58CF6"
             android:drawableRight="@drawable/noti"
-            android:text="Juan"
+            android:text="Jhon Abraham"
             android:textAlignment="viewStart"
             android:textColor="#FA128B"
             android:textSize="24sp"
