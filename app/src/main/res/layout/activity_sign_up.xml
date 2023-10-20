@@ -35,7 +35,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="317dp"
-        android:layout_height="412dp"
+        android:layout_height="426dp"
         android:background="@drawable/rounded_container"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,8 +76,8 @@
 
         <LinearLayout
             android:id="@+id/linearLayout3"
-            android:layout_width="256dp"
-            android:layout_height="187dp"
+            android:layout_width="254dp"
+            android:layout_height="225dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -139,11 +139,28 @@
                 android:drawablePadding="5dp"
                 android:ems="10"
                 android:fontFamily="@font/poppins"
-                android:hint="Ingrese su cédula"
+                android:hint="cédula"
                 android:inputType="number"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
                 android:textColorHint="@android:color/darker_gray" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5" />
+
+            <Button
+                android:id="@+id/scanner"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_weight="0.25"
+                android:backgroundTint="@android:color/holo_purple"
+                android:fontFamily="@font/poppins"
+                android:text="Escanear cédula"
+                android:textAlignment="viewStart"
+                app:cornerRadius="5dp"
+                app:icon="@android:drawable/ic_menu_camera" />
 
         </LinearLayout>
 
@@ -151,8 +168,8 @@
             android:id="@+id/signUpBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/signup"
             android:fontFamily="@font/poppins"
+            android:text="@string/signup"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
