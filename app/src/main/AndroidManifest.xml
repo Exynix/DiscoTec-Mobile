@@ -37,6 +37,11 @@
             android:name=".MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
+            android:name=".VistaChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatMenuActivity"
+            android:exported="false" />
         <activity
             android:name=".ReservasActivity"
             android:exported="false" />
@@ -53,7 +58,7 @@
             android:name=".DashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".SignInActivity"
+            android:name=".SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1E1E1E"
-    tools:context=".MainActivity">
+    tools:context=".SignUpActivity">
 
     <TextView
         android:id="@+id/textView2"
@@ -34,8 +34,8 @@
         android:contentDescription="@string/logo_principal" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="322dp"
-        android:layout_height="373dp"
+        android:layout_width="317dp"
+        android:layout_height="412dp"
         android:background="@drawable/rounded_container"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,19 +43,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView10"
         app:layout_constraintVertical_bias="0.238">
-
-        <Button
-            android:id="@+id/loginBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:text="@string/login"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
         <LinearLayout
             android:layout_width="271dp"
@@ -73,25 +60,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:backgroundTint="@color/fucsia"
+                android:backgroundTint="@android:color/transparent"
                 android:fontFamily="@font/poppins"
-                android:text="@string/login" />
+                android:text="@string/login"
+                android:textColor="@color/fucsia" />
 
             <Button
-                android:id="@+id/gotoSignUpBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:backgroundTint="@android:color/transparent"
+                android:backgroundTint="@color/fucsia"
                 android:fontFamily="@font/poppins"
-                android:text="@string/signup"
-                android:textColor="@color/fucsia" />
+                android:text="@string/signup" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout3"
-            android:layout_width="249dp"
-            android:layout_height="111dp"
+            android:layout_width="256dp"
+            android:layout_height="187dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -137,7 +123,41 @@
                 android:paddingEnd="5dp"
                 android:textColorHint="@android:color/darker_gray" />
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5" />
+
+            <EditText
+                android:id="@+id/cedulaInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:background="@android:color/holo_purple"
+                android:drawableStart="@drawable/ic_cedula"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:fontFamily="@font/poppins"
+                android:hint="Ingrese su cédula"
+                android:inputType="number"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:textColorHint="@android:color/darker_gray" />
+
         </LinearLayout>
+
+        <Button
+            android:id="@+id/signUpBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signup"
+            android:fontFamily="@font/poppins"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
