@@ -94,7 +94,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/hora"
+            android:id="@+id/hora1"
             android:layout_width="280dp"
             android:layout_height="43dp"
             android:layout_marginBottom="15dp"
