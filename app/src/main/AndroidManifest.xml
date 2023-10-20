@@ -25,18 +25,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
-        <activity
-            android:name=".Ajustes"
-            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
 
         <activity
+            android:name=".AjustesActivity"
+            android:exported="false" />
+        <activity
             android:name=".MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
+        <activity
             android:name=".VistaChatActivity"
             android:exported="false" />
         <activity
@@ -69,10 +70,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.myapplication.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>
