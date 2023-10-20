@@ -38,7 +38,7 @@
             android:name=".PerfilActivity"
             android:exported="false" />
         <activity
-            android:name=".MiParcheActivity"
+            android:name=".CrearMiParcheActivity"
             android:exported="false" />
         <activity
             android:name=".SearchActivity"

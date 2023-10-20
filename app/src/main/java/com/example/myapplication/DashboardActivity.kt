@@ -6,7 +6,6 @@ import android.os.Bundle
 import com.example.myapplication.databinding.ActivityDashboardBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class DashboardActivity : AppCompatActivity() {
@@ -44,7 +43,7 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         mapBtn.setOnClickListener {
-            val intent = Intent(applicationContext, MiParcheActivity::class.java)
+            val intent = Intent(applicationContext, CrearMiParcheActivity::class.java)
             startActivity(intent)
         }
 

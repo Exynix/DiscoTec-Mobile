@@ -3,18 +3,19 @@ package com.example.myapplication
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.example.myapplication.databinding.ActivityCrearMiParcheBinding
 import com.example.myapplication.databinding.ActivityMiParcheBinding
 
-class MiParcheActivity : AppCompatActivity() {
+class CrearMiParcheActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMiParcheBinding
+    private lateinit var binding: ActivityCrearMiParcheBinding
 
     private lateinit var volverBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMiParcheBinding.inflate(layoutInflater)
+        binding = ActivityCrearMiParcheBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         volverBtn = binding.button4
@@ -22,5 +23,8 @@ class MiParcheActivity : AppCompatActivity() {
         volverBtn.setOnClickListener {
             finish()
         }
+    }
+
+
     }
 }
