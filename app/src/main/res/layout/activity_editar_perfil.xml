@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E1E1E"
+    tools:context=".EditarPerfil">
+
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="182dp"
+            android:layout_height="244dp"
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/foto_de_perfil"
+            android:scaleType="centerInside"
+            android:src="@drawable/perfil" />
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="centerInside"
+            android:src="@drawable/editar"
+            android:translationX="120dp"
+            android:translationY="160dp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        app:layout_constraintVertical_bias="0.318">
+
+        <TextView
+            android:id="@+id/NombreUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="Nombre de usuario"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/usuario"
+            android:layout_width="280dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="#B73ECE"
+            android:gravity="left"
+            android:text="user"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:cornerRadius="10dp" />
+
+        <TextView
+            android:id="@+id/Contraseña"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="Contraseña"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/contraseña"
+            android:layout_width="280dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="#B73ECE"
+            android:gravity="left"
+            android:text="******"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:cornerRadius="10dp" />
+
+        <TextView
+            android:id="@+id/Celular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="Celular"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/celular"
+            android:layout_width="280dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="#B73ECE"
+            android:gravity="left"
+            android:text="3206493263"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:cornerRadius="10dp" />
+
+        <TextView
+            android:id="@+id/Correo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="Correo"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/correo"
+            android:layout_width="280dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="#B73ECE"
+            android:gravity="left"
+            android:text="user@gmail.com"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:cornerRadius="10dp" />
+
+        <TextView
+            android:id="@+id/PreguntaSeguridad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="Pregunta de seguridad"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/preguntaseguridad"
+            android:layout_width="280dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="#B73ECE"
+            android:gravity="left"
+            android:text="¿Cuál es el nombre de mi mascota?"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:cornerRadius="10dp" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,10 +2,12 @@
     <string name="app_name">DISCO-TEC</string>
     <string name="aceptar">Aceptar</string>
     <string name="DiscoTecTitle">Disco-Tec</string>
+    <string name="hint_password">Ingrese su contraseña</string>
     <string name="hint_password">contraseña</string>
     <string name="login">Login</string>
     <string name="signup">Signup</string>
     <string name="hint_email">correo</string>
+    <string name="hint_email">Ingrese su correo</string>
     <string name="logo_principal">logo discotec</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="editar_perfil">editar perfil</string>
@@ -23,4 +25,19 @@
     <string name="pepito_lozano">pepito lozano</string>
     <string name="cerrar_sesi_n">cerrar sesión</string>
     <string name="eliminar_cuenta">eliminar cuenta</string>
+    <string name="buscar_discoteca">Buscar Discoteca</string>
+    <string name="boton_de_busqueda">boton de busqueda</string>
+    <string name="campo_foto_perfil">campo foto perfil</string>
+    <string name="barra_estetica">Barra estetica</string>
+    <string name="icono_ajustes">icono ajustes</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="editar_perfil">Editar Perfil</string>
+    <string name="notificaciones">Notificaciones</string>
+    <string name="privacidad_y_seguridad">Privacidad y seguridad</string>
+    <string name="preferencias">Preferencias</string>
+    <string name="centro_de_ayuda">Centro de ayuda</string>
+    <string name="foto_de_perfil">foto de perfil</string>
+    <string name="pepito_lozano">Pepito Lozano</string>
+    <string name="eliminar_cuenta">Eliminar cuenta</string>
+    <string name="cerrar_sesi_n">Cerrar sesión</string>
 </resources>
