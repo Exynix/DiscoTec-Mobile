@@ -13,7 +13,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:fontFamily="@font/Poppins_Bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -25,7 +24,6 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/Poppins_Bold"
         android:text="Disco Tec"
         android:textColor="#FF47A5"
         android:textSize="50sp"
@@ -62,12 +60,11 @@
         app:layout_constraintVertical_bias="0.145">
 
         <EditText
-            android:layout_width="280dp"
-            android:layout_height="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
             android:layout_marginTop="10dp"
             android:background="#B73ECE"
             android:focusableInTouchMode="false"
-            android:fontFamily="@font/poppins"
             android:text="Ingrese su número de teléfono"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -75,11 +72,10 @@
 
         <EditText
             android:layout_width="280dp"
-            android:layout_height="30dp"
+            android:layout_height="48dp"
             android:layout_marginTop="10dp"
             android:background="#B73ECE"
             android:focusableInTouchMode="false"
-            android:fontFamily="@font/poppins"
             android:text="Ingrese su contraseña"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -87,11 +83,10 @@
 
         <EditText
             android:layout_width="280dp"
-            android:layout_height="30dp"
+            android:layout_height="48dp"
             android:layout_marginTop="10dp"
             android:background="#B73ECE"
             android:focusableInTouchMode="false"
-            android:fontFamily="@font/poppins"
             android:text="Ingrese su nombre completo"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -99,11 +94,10 @@
 
         <EditText
             android:layout_width="280dp"
-            android:layout_height="30dp"
+            android:layout_height="48dp"
             android:layout_marginTop="10dp"
             android:background="#B73ECE"
             android:focusableInTouchMode="false"
-            android:fontFamily="@font/poppins"
             android:text="Ingrese su apellido"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -111,11 +105,10 @@
 
         <EditText
             android:layout_width="280dp"
-            android:layout_height="30dp"
+            android:layout_height="48dp"
             android:layout_marginTop="10dp"
             android:background="#B73ECE"
             android:focusableInTouchMode="false"
-            android:fontFamily="@font/poppins"
             android:text="Ingrese su número de cédula"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -127,23 +120,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Escanea tu cédula"
-        android:fontFamily="@font/poppins"
         app:layout_constraintBottom_toTopOf="@+id/createAccountBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.264"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.51" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/createAccountBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="384dp"
-        android:fontFamily="@font/Poppins_Bold"
+        android:layout_marginTop="420dp"
         android:text="Crear Cuenta"
         app:layout_constraintEnd_toEndOf="@+id/backToLoginBtn"
-        app:layout_constraintHorizontal_bias="0.355"
+        app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="@+id/backToLoginBtn"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 

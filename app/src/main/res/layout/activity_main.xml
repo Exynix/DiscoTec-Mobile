@@ -13,8 +13,7 @@
         android:layout_height="48dp"
         android:background="#B73ECE"
         android:focusableInTouchMode="false"
-        android:fontFamily="@font/poppins"
-        android:text="Ingrese su número de télefono"
+        android:text="."
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -32,8 +31,7 @@
         android:layout_marginTop="36dp"
         android:background="#B73ECE"
         android:focusableInTouchMode="false"
-        android:fontFamily="@font/poppins"
-        android:text="Ingrese su contraseña"
+        android:text="."
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -48,7 +46,6 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/Poppins_Bold"
         android:text="Disco Tec"
         android:textColor="#FF47A5"
         android:textSize="50sp"
@@ -74,7 +71,6 @@
         android:id="@+id/signInBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/Poppins_Bold"
         android:text="SignIn"
         app:layout_constraintBottom_toTopOf="@+id/editText2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +85,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:fontFamily="@font/Poppins_Bold"
         android:text="Login"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -97,5 +92,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.835" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="220dp"
+        android:layout_height="57dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText3"
+        app:layout_constraintEnd_toEndOf="@+id/editText3"
+        app:layout_constraintStart_toStartOf="@+id/editText3"
+        app:layout_constraintTop_toTopOf="@+id/editText3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese la contraseña" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="211dp"
+        android:layout_height="56dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText2"
+        app:layout_constraintEnd_toEndOf="@+id/editText2"
+        app:layout_constraintStart_toStartOf="@+id/editText2"
+        app:layout_constraintTop_toTopOf="@+id/editText2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese su Usuario" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

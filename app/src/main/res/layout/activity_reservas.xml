@@ -25,6 +25,7 @@
             android:clickable="true"
             android:contentDescription="aaaa"
             android:src="@android:drawable/ic_input_add"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,9 +34,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="4dp"
             android:clickable="true"
             android:contentDescription="aaaaaaa"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/paginaPrinciBtn"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/ic_menu_search" />
@@ -47,6 +48,7 @@
             android:layout_marginStart="36dp"
             android:clickable="true"
             android:contentDescription="aaaaa"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/buscarBtn"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/ic_menu_call" />
@@ -77,14 +79,6 @@
             app:layout_constraintStart_toEndOf="@+id/mapaBtn"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/ic_menu_info_details" />
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="46dp"
-            tools:layout_editor_absoluteY="-41dp">
-
-        </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -123,7 +117,7 @@
             android:background="@color/black">
 
             <ImageView
-                android:id="@+id/imgViewCard2"
+                android:id="@+id/imgViewCard3"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:scaleType="center"
@@ -139,7 +133,7 @@
                 android:paddingLeft="10dp"
                 android:text="Palenque"
                 android:textColor="@color/fucsia"
-                app:layout_constraintTop_toBottomOf="@+id/imgViewCard2" />
+                app:layout_constraintTop_toBottomOf="@+id/imgViewCard3" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -153,7 +147,7 @@
                 android:paddingLeft="10dp"
                 android:text="Horario: 10pm-6am"
                 android:textColor="@color/white"
-                app:layout_constraintTop_toBottomOf="@+id/imgViewCard2" />
+                app:layout_constraintTop_toBottomOf="@+id/imgViewCard3" />
 
         </RelativeLayout>
 

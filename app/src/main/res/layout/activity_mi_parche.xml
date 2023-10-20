@@ -11,7 +11,6 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/Poppins_Bold"
         android:text="Mis PARCHES"
         android:textColor="#FF47A5"
         android:textSize="40sp"
@@ -25,7 +24,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/MAS"
+        android:src="@drawable/mas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
@@ -34,7 +33,7 @@
         app:layout_constraintVertical_bias="0.09"></ImageView>
 
 
-    <SearchView
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
@@ -82,7 +81,6 @@
                 android:layout_width="168dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:fontFamily="@font/Poppins_Bold"
                 android:text="21 de Sept"
                 android:textColor="#FF47A5"
                 android:textSize="15sp"
@@ -98,7 +96,6 @@
                 android:layout_width="168dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:fontFamily="@font/Poppins_Regular"
                 android:text="No lo olvides!"
                 android:textColor="#FFFFFF"
                 android:textSize="10sp"
@@ -114,7 +111,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:fontFamily="@font/Poppins_Regular"
                 android:text="2 min"
                 android:textColor="#FFFFFF"
                 android:textSize="10sp"
@@ -162,7 +158,6 @@
                 android:layout_width="168dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:fontFamily="@font/Poppins_Bold"
                 android:text="Cumple Lau"
                 android:textColor="#FF47A5"
                 android:textSize="15sp"
@@ -178,7 +173,6 @@
                 android:layout_width="168dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:fontFamily="@font/Poppins_Regular"
                 android:text="Vamos!"
                 android:textColor="#FFFFFF"
                 android:textSize="10sp"
@@ -194,7 +188,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:fontFamily="@font/Poppins_Regular"
                 android:text="2 min"
                 android:textColor="#FFFFFF"
                 android:textSize="10sp"

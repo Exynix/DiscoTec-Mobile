@@ -26,6 +26,7 @@
             android:clickable="true"
             android:contentDescription="aaaa"
             android:src="@android:drawable/ic_input_add"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,9 +35,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="4dp"
             android:clickable="true"
             android:contentDescription="aaaaaaa"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/paginaPrinciBtn"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/ic_menu_search" />
@@ -48,6 +49,7 @@
             android:layout_marginStart="36dp"
             android:clickable="true"
             android:contentDescription="aaaaa"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/buscarBtn"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/ic_menu_call" />
@@ -78,17 +80,6 @@
             app:layout_constraintStart_toEndOf="@+id/mapaBtn"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/ic_menu_info_details" />
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="46dp"
-            tools:layout_editor_absoluteY="-41dp">
-
-
-
-
-        </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
