@@ -45,6 +45,8 @@ class MainActivity : AppCompatActivity() {
             Log.i("MainActivity", "Email: $email")
             Log.i("MainActivity", "Password: $password")
             signInUser(email, password)
+            val intent = Intent(applicationContext, DashboardActivity::class.java)
+            startActivity(intent)
         }
 
         signInBtn.setOnClickListener {
