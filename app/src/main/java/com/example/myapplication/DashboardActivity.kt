@@ -70,7 +70,7 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         binding.reservasBtn.setOnClickListener {
-            val intent = Intent(applicationContext, FormularioReservaActivity::class.java)
+            val intent = Intent(applicationContext, ReservasActivity::class.java)
             startActivity(intent)
         }
 

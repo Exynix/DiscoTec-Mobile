@@ -172,5 +172,10 @@ class ReservasActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.hacerReserva.setOnClickListener {
+            val intent = Intent(applicationContext, FormularioReservaActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

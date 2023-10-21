@@ -289,25 +289,26 @@
         android:id="@+id/mapBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="280dp"
         android:backgroundTint="@color/fucsia"
         android:text="Mapa"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toStartOf="@+id/temperatura"
-        app:layout_constraintHorizontal_bias="0.26"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView14"
+        app:layout_constraintEnd_toStartOf="@+id/textView14"
+        app:layout_constraintHorizontal_bias="0.568"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.545" />
 
     <ImageButton
         android:id="@+id/temperatura"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="268dp"
         android:backgroundTint="#F9128A"
         android:scaleType="centerInside"
         android:src="@drawable/cloudy"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toBottomOf="@+id/textView14"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.845"
-        app:layout_constraintStart_toStartOf="parent"></ImageButton>
+        app:layout_constraintStart_toEndOf="@+id/textView14"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.916"></ImageButton>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
