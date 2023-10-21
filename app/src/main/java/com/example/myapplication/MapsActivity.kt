@@ -166,6 +166,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.uiSettings.setAllGesturesEnabled(true)
         /// Add UI controls
         mMap.uiSettings.isZoomControlsEnabled = true
+        // Cambia la posición del control de zoom
         mMap.uiSettings.isMapToolbarEnabled = true
 
         verifyPermissions(this, android.Manifest.permission.ACCESS_FINE_LOCATION, "El permiso es requerido para poder mostrar tu ubicación en el mapa")
@@ -224,10 +225,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                     end = ""
                     poly?.remove()
+
                     if(poly!=null){
                         poly = null
+                        poly?.remove()
                     }
-                    Toast.makeText(this,"Selecciona punto de destino", Toast.LENGTH_SHORT).show()
 
                     if(start.isNotEmpty())
                     {
@@ -236,11 +238,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     }
 
                     // Se crea la ruta hacia el lugar que se busca
+                    // Cargar la imagen del marcador personalizado
+                    val b = BitmapFactory.decodeResource(resources, R.drawable.boladisco)
+
+                    // Definir el tamaño fijo que deseas para el marcador (en píxeles)
+                    val width = 100
+                    val height = 100
+
+                    // Escalar la imagen al tamaño deseado
+                    val smallMarker = Bitmap.createScaledBitmap(b, width, height, false)
+
+                    // Agregar el marcador al mapa con el icono personalizado y tamaño fijo
                     mMap.addMarker(
                         MarkerOptions().position(position)
-                            .title(addressResult.featureName)
-                            .snippet(addressResult.getAddressLine(0))
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+                            .title("Marker in my actual position ${position.latitude} ${position.longitude}")
+                            .snippet("Empire State Building, New York, EE.UU.")
+                            .alpha(0.9f)
+                            .icon(BitmapDescriptorFactory.fromBitmap(smallMarker))
                     )
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15f))
 
@@ -294,7 +308,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             .title("Marker in my actual position ${location.latitude} ${location.longitude}")
                             .snippet("Empire State Building, New York, EE.UU.")
                             .alpha(0.9f)
-                            .icon(BitmapDescriptorFactory.fromBitmap(smallMarker))
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
                     )
 
                     start = "${location.longitude},${location.latitude}"
