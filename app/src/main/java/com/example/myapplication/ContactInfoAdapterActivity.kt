@@ -1,23 +1,32 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.database.Cursor
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.cursoradapter.widget.CursorAdapter
+import com.example.myapplication.databinding.ActivityContactInfoAdapterBinding
 
-class ContactInfoAdapterActivity : AppCompatActivity() {
-    companion object {
-        // Podemos definir constantes para el adapter como PROYECCIÓN, FILTRO, ORDEN, etc.
-        // En el caso de este ejemplo ya recibimos un cursor parametrizado con estos datos desde la actividad.
-    }
+class ContactInfoAdapterActivity (context: Context, cursor: Cursor?) : CursorAdapter(context, cursor, 0) {
+
 
     override fun newView(context: Context, cursor: Cursor, parent: ViewGroup?): View {
         // Inicializamos el binding
-        val binding = AdapterContactInfoBinding.inflate(LayoutInflater.from(context), parent, false)
+        val binding = ActivityContactInfoAdapterBinding.inflate(LayoutInflater.from(context), parent, false)
         return binding.root
     }
 
     @SuppressLint("Range", "Recycle")
     override fun bindView(view: View?, context: Context?, cursor: Cursor?) {
-        val binding = AdapterContactInfoBinding.bind(view!!)
+        val binding = ActivityContactInfoAdapterBinding.bind(view!!)
         // Podemos usar el binding para acceder a los elementos de la vista, y el cursor para acceder a los datos del cursor
 
         // Nomnbre del contacto
@@ -50,9 +59,5 @@ class ContactInfoAdapterActivity : AppCompatActivity() {
             // Si no hay foto de avatar, podemos mostrar una imagen predeterminada
             contactPhotoImageView.setImageResource(R.drawable.default_avatar)
         }
-    }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_contact_info_adapter)
     }
 }

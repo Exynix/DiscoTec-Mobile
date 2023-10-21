@@ -108,6 +108,7 @@ class CrearMiParcheActivity : AppCompatActivity() {
                 if(tipo == "Camara") {
                     updateUICamara(true)
                 }else{
+                    binding.listaContactos.isVisible = true
                     updateUIContact(true)
                 }
             }
