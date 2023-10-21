@@ -34,7 +34,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/monument_regular"
             android:text="Comprobante de reserva"
             android:textAlignment="center"
             android:textColor="#FA128B"
