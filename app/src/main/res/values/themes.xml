@@ -8,10 +8,4 @@
 
     <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
 
-    <style name="Theme.App" parent="Theme.MaterialComponents">
-        <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView.Colored</item>
-        <item name="colorPrimary">@color/fucsia</item>
-        <item name="colorOnPrimary">@color/grey</item>
-    </style>
-
 </resources>

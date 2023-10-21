@@ -88,7 +88,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             app:cornerRadius="20dp"
-            app:icon="@drawable/baseline_account_circle_24"
+            app:icon="@drawable/icono_perfil"
             app:iconSize="60dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -107,7 +107,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             app:cornerRadius="20dp"
-            app:icon="@drawable/baseline_account_circle_24"
+            app:icon="@drawable/icono_perfil"
             app:iconSize="60dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/usuario1" />
