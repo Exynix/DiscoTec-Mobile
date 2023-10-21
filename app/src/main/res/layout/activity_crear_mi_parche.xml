@@ -12,7 +12,7 @@
         android:layout_width="127dp"
         android:layout_height="128dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/groupicon"
+        android:src="@drawable/round_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +25,8 @@
         android:layout_marginTop="8dp"
         android:background="#00FFFFFF"
         android:backgroundTint="#00FFFFFF"
-        android:src="@android:drawable/ic_menu_camera"
+        android:scaleType="centerInside"
+        android:src="@drawable/camara"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -35,6 +36,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="204dp"
         android:text="Nombre:"
+        android:fontFamily="@font/poppins_bold"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -48,6 +50,7 @@
         android:layout_marginTop="108dp"
         android:background="#6F2C7C"
         android:ems="10"
+        android:fontFamily="@font/poppins"
         android:inputType="text"
         android:textColorHint="#FAFAFA"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +92,8 @@
         android:layout_marginBottom="12dp"
         android:text="Añadir parceros:"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="20sp"
+        android:fontFamily="@font/poppins_bold"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintStart_toStartOf="parent" />
@@ -137,6 +141,7 @@
         android:layout_marginBottom="88dp"
         android:backgroundTint="#FA128B"
         android:text="Aceptar"
+        android:fontFamily="@font/poppins_bold"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

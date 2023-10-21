@@ -155,6 +155,11 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.nighCoinsComprar.setOnClickListener {
+            val intent = Intent(applicationContext, ComprarNightCoinsActivity::class.java)
+            startActivity(intent)
+        }
+
         temperatureSensorListener = object : SensorEventListener {
             override fun onSensorChanged(event: SensorEvent) {
                 temperatura = event.values[0]

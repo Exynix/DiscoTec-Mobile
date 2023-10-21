@@ -25,11 +25,15 @@
         android:id="@+id/anadir"
         android:layout_width="28dp"
         android:layout_height="33dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="4dp"
         android:layout_marginBottom="48dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/mas"
+        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintStart_toEndOf="@+id/parche"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/plus"
         app:tint="#FFFFFF" />
 
     <LinearLayout
@@ -49,6 +53,7 @@
             android:layout_width="234dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/poppins_bold"
             android:ems="10"
             android:hint="Buscar uno de tus parches"
             android:inputType="text"
@@ -56,11 +61,12 @@
 
         <ImageView
             android:id="@+id/imageView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerInside"
             android:layout_weight="1"
             android:paddingTop="5dp"
-            android:src="@android:drawable/ic_menu_search"
+            android:src="@drawable/lupa"
             app:tint="#FFFFFF" />
     </LinearLayout>
 
@@ -84,7 +90,8 @@
             android:drawableRight="@drawable/noti"
             android:text="Jhon Abraham"
             android:textAlignment="viewStart"
-            android:textColor="#FA128B"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold"
             app:cornerRadius="20dp"
@@ -102,8 +109,9 @@
             android:backgroundTint="#E58CF6"
             android:drawableRight="@drawable/noti"
             android:text="Aquiles"
+            android:fontFamily="@font/poppins_bold"
             android:textAlignment="viewStart"
-            android:textColor="#FA128B"
+            android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold"
             app:cornerRadius="20dp"

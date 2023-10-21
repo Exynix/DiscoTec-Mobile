@@ -61,12 +61,21 @@
             app:layout_constraintVertical_bias="0.241" />
 
         <EditText
+            android:id="@+id/cantidadAComprar"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="20dp"
             android:inputType="number"
             android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnCalcular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aceptar"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"/>
 
         <TextView
             android:id="@+id/totalNightCoins"
@@ -84,7 +93,6 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
-            android:text="52800"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="30sp" />
