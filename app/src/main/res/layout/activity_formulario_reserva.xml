@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E1E1E"
+    tools:context=".FormularioReservaActivity">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="325dp"
+        android:layout_height="600dp"
+        android:layout_gravity="center"
+        android:background="@drawable/roundedbox2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.284">
+
+        <TextView
+            android:id="@+id/formulario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="Formulario de reserva"
+            android:textColor="#FA128B"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/cantidadpersonas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="Cantidad de personas"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/cant"
+            android:layout_width="280dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="#B73ECE"
+            android:gravity="left"
+            android:inputType="number"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:cornerRadius="10dp" />
+
+        <TextView
+            android:id="@+id/Contraseña"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="Fecha"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/fecha"
+            android:layout_width="280dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="#B73ECE"
+            android:clickable="true"
+            android:focusable="false"
+            android:gravity="left"
+            android:inputType="date"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:cornerRadius="10dp" />
+
+        <TextView
+            android:id="@+id/Celular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="Hora"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/hora1"
+            android:layout_width="280dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="15dp"
+            android:backgroundTint="#B73ECE"
+            android:gravity="left"
+            android:inputType="number"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:cornerRadius="10dp" />
+
+        <TextView
+            android:id="@+id/Correo"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="sans-serif-black"
+            android:text="SI DESEA DEJAR ALGUNA RECOMENDACIÓN O SONSIDERACIÓN DEL STAFF PARA LA RESERVA ESCRÍBALA"
+            android:textColor="#65CED2"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/preguntaseguridad"
+            android:layout_width="280dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="#B73ECE"
+            android:gravity="left"
+            android:text="Comentarios"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:cornerRadius="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintVertical_bias="0.136">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/night_coins" />
+
+        <TextView
+            android:id="@+id/nigtCoins"
+            android:layout_width="236dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="sans-serif"
+            android:text="Esta reserva costará 200 NightCoins"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Button
+            android:id="@+id/convencional"
+            android:layout_width="130dp"
+            android:layout_height="48dp"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="50"
+            android:backgroundTint="#65CED2"
+            android:fontFamily="sans-serif-black"
+            android:text="Realizar pago convencional"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:cornerRadius="15dp" />
+
+        <Button
+            android:id="@+id/pagoNC"
+            android:layout_width="130dp"
+            android:layout_height="48dp"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="50"
+            android:backgroundTint="#FA128B"
+            android:fontFamily="sans-serif-black"
+            android:text="Pago con NightCoins"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:cornerRadius="15dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

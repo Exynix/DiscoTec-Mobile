@@ -3,37 +3,22 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.myapplication.databinding.ActivityPerfilBinding
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import android.widget.Button
+import com.example.myapplication.databinding.ActivityMiParcheBinding
 
-class PerfilActivity : AppCompatActivity() {
+class MiParcheActivity : AppCompatActivity() {
 
-    private lateinit var mAuth: FirebaseAuth
-    private lateinit var binding: ActivityPerfilBinding
+    private lateinit var binding: ActivityMiParcheBinding
+
+    private lateinit var volverBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityPerfilBinding.inflate(layoutInflater)
+        binding = ActivityMiParcheBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mAuth = Firebase.auth
-
-        binding.ajustes.setOnClickListener{
-            // Intent hacia ajustes
-            val intent = Intent(applicationContext, AjustesActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.cerrarSesion.setOnClickListener{
-            mAuth.signOut()
-        }
-
-        binding.EliminarCuenta.setOnClickListener {
-            // TO DO
-        }
+        volverBtn = binding.button4
 
         binding.paginaPrincipioBtn.setOnClickListener {
             val intent = Intent(applicationContext, DashboardActivity::class.java)
@@ -60,12 +45,5 @@ class PerfilActivity : AppCompatActivity() {
             val intent = Intent(applicationContext, PerfilActivity::class.java)
             startActivity(intent)
         }
-
-        binding.cerrarSesion.setOnClickListener {
-            mAuth.signOut()
-            val intent = Intent(applicationContext, MainActivity::class.java)
-            startActivity(intent)
-        }
     }
-
 }

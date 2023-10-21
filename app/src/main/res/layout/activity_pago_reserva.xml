@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E1E1E"
+    tools:context=".PagoReservaActivity">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Seleccione su método de pago:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.205" />
+
+    <FrameLayout
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.304">
+
+        <View
+            android:layout_width="305dp"
+            android:layout_height="331dp"
+            android:layout_gravity="center"
+            android:background="@drawable/roundedbox" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="280dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="40dp">
+
+                <Button
+                    android:id="@+id/editarPerfil"
+                    android:layout_width="280dp"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="20dp"
+                    android:backgroundTint="#D2A2DB"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:cornerRadius="15dp" />
+
+                <LinearLayout
+                    android:layout_width="280dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="33"
+                        android:src="@drawable/visa" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="33"
+                        android:src="@drawable/mastercard" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="33"
+                        android:src="@drawable/maestro" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="280dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="40dp">
+
+                <Button
+                    android:id="@+id/Nequi"
+                    android:layout_width="280dp"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="20dp"
+                    android:backgroundTint="#D2A2DB"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:cornerRadius="15dp" />
+
+                <LinearLayout
+                    android:layout_width="280dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="280dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/nequi" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="280dp"
+                android:layout_height="60dp">
+
+                <Button
+                    android:id="@+id/mercadoPago"
+                    android:layout_width="280dp"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="20dp"
+                    android:backgroundTint="#D2A2DB"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:cornerRadius="15dp" />
+
+                <LinearLayout
+                    android:layout_width="280dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="280dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/mercadopago" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
