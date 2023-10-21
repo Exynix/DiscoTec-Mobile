@@ -52,6 +52,11 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.mapBtn.setOnClickListener {
+            val intent = Intent(applicationContext, MapsActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
 
