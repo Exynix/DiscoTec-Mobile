@@ -99,7 +99,6 @@ class CrearMiParcheActivity : AppCompatActivity() {
         binding.listaContactos.adapter = adapter
 
         verifyPermissions(this, android.Manifest.permission.READ_CONTACTS, "El permiso es requerido para acceder a los contactos", "Contact")
-
     }
     private fun verifyPermissions(context: Context, permission: String, rationale: String, tipo: String) {
         when {
