@@ -3,9 +3,9 @@ package com.example.myapplication
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class PagoReserva : AppCompatActivity() {
+class ComprarNightCoinsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pago_reserva)
+        setContentView(R.layout.activity_comprar_night_coins)
     }
 }
