@@ -95,10 +95,43 @@ class CrearMiParcheActivity : AppCompatActivity() {
             pickGalleryImage.type = "image/*"
             galleryActivityResultLauncher.launch(pickGalleryImage)
         }
-        adapter = ContactInfoAdapterActivity(this, null)
-        binding.listaContactos.adapter = adapter
+        binding.addParcero.setOnClickListener {
+            adapter = ContactInfoAdapterActivity(this, null)
+            binding.listaContactos.adapter = adapter
+            verifyPermissions(this, android.Manifest.permission.READ_CONTACTS, "El permiso es requerido para acceder a los contactos", "Contact")
+            binding.listaContactos.isVisible = true
+            binding.addParcero.isVisible = false
 
-        verifyPermissions(this, android.Manifest.permission.READ_CONTACTS, "El permiso es requerido para acceder a los contactos", "Contact")
+        }
+        binding.paginaPrincipioBtn.setOnClickListener {
+            val intent = Intent(applicationContext, DashboardActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.buscarBtn.setOnClickListener {
+            val intent = Intent(applicationContext, SearchActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.reservasBtn.setOnClickListener {
+            val intent = Intent(applicationContext, ReservasActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        binding.parcheBtn.setOnClickListener{
+            val intent = Intent(applicationContext, CrearMiParcheActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.perfilBtn.setOnClickListener {
+            val intent = Intent(applicationContext, PerfilActivity::class.java)
+            startActivity(intent)
+        }
+        binding.chat.setOnClickListener {
+            val intent = Intent(applicationContext, ChatMenuActivity::class.java)
+            startActivity(intent)
+        }
     }
     private fun verifyPermissions(context: Context, permission: String, rationale: String, tipo: String) {
         when {
@@ -108,6 +141,7 @@ class CrearMiParcheActivity : AppCompatActivity() {
                     updateUICamara(true)
                 }else{
                     binding.listaContactos.isVisible = true
+                    binding.addParcero.isVisible = false
                     updateUIContact(true)
                 }
             }

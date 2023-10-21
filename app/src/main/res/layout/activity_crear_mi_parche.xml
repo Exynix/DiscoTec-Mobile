@@ -85,7 +85,7 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="40dp"
         android:layout_marginBottom="12dp"
         android:text="Añadir parceros:"
         android:textColor="@color/white"
@@ -111,7 +111,7 @@
         android:id="@+id/eliminar"
         android:layout_width="42dp"
         android:layout_height="38dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="12dp"
         android:background="#6F2C7C"
         android:src="@android:drawable/ic_menu_delete"
@@ -122,7 +122,7 @@
         android:id="@+id/anadirParcero"
         android:layout_width="39dp"
         android:layout_height="38dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginEnd="92dp"
         android:layout_marginBottom="12dp"
         android:background="#662872"
         android:src="@android:drawable/ic_menu_add"
@@ -140,5 +140,117 @@
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/navBar_background">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/paginaPrincipioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/icono_home"
+            android:backgroundTint="@color/navBar_background"
+            app:tint="@color/azulClaro"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="Dashboard" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/buscarBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="36dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:backgroundTint="@color/navBar_background"
+            app:tint="@color/azulClaro"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/paginaPrincipioBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/icono_busqueda"
+            android:contentDescription="Busqueda"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/reservasBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="40dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:backgroundTint="@color/navBar_background"
+            app:tint="@color/azulClaro"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buscarBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/icono_reservas"
+            android:contentDescription="Reservas"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/parcheBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+
+            android:clickable="true"
+            android:focusable="true"
+            android:backgroundTint="@color/navBar_background"
+            app:tint="@color/azulClaro"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/reservasBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/icono_parche"
+            android:contentDescription="Parches"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/perfilBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+
+            android:backgroundTint="@color/navBar_background"
+            android:clickable="true"
+            android:contentDescription="Perfil"
+            android:focusable="true"
+
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toEndOf="@+id/parcheBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/icono_perfil"
+            app:tint="@color/azulClaro" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/chat"
+        android:layout_width="46dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="#6F2C7C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText"
+        app:srcCompat="@android:drawable/stat_notify_chat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

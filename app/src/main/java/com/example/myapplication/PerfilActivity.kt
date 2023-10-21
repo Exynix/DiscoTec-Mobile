@@ -52,7 +52,7 @@ class PerfilActivity : AppCompatActivity() {
 
 
         binding.parcheBtn.setOnClickListener{
-            val intent = Intent(applicationContext, MiParcheActivity::class.java)
+            val intent = Intent(applicationContext, CrearMiParcheActivity::class.java)
             startActivity(intent)
         }
 
