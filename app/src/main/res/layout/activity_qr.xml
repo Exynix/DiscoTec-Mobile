@@ -55,7 +55,7 @@
         android:id="@+id/formulario"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="@font/monument_regular"
         android:text="Escanéame"
         android:textAlignment="center"
         android:textColor="#FA128B"
