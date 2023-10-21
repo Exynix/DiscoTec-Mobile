@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.myapplication.databinding.ActivityPerfilBinding
@@ -12,6 +13,8 @@ class PerfilActivity : AppCompatActivity() {
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var binding: ActivityPerfilBinding
+
+    private lateinit var sh: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +31,14 @@ class PerfilActivity : AppCompatActivity() {
         }
 
         binding.cerrarSesion.setOnClickListener{
+
+            if (!checkBiometric()) {
+                val edit = sh.edit()
+                edit.putString("email", "")
+                edit.putString("password", "")
+                edit.apply()
+            }
+
             mAuth.signOut()
         }
 
@@ -68,4 +79,7 @@ class PerfilActivity : AppCompatActivity() {
         }
     }
 
+    private fun checkBiometric(): Boolean {
+        return sh.getBoolean("biometric", false)
+    }
 }
