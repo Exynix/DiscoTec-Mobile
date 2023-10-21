@@ -168,6 +168,7 @@
         app:menu="@menu/bottom_navigation_menu" />
 -->
 
+
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
@@ -177,13 +178,12 @@
         android:text="Lugares que te gustaran"
         android:textColor="@color/moradoPrincipal"
         android:textSize="23sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14"
-        app:layout_constraintVertical_bias="0.133" />
-
+        app:layout_constraintVertical_bias="0.4" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout2"
@@ -286,6 +286,38 @@
             app:tint="@color/azulClaro" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="409dp"
+        android:layout_height="180dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/horizontal_linear_layout">
+
+
+<!--                <ImageView-->
+<!--                    android:layout_width="250sp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:id="@+id/imageView_bottomImages"-->
+<!--                    android:layout_marginEnd="30sp"-->
+<!--                    android:scaleType="centerInside">-->
+
+<!--                </ImageView>-->
+
+
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
 
     <!-- Barra de navegacion improvisada -->
 
