@@ -8,77 +8,120 @@
     android:background="@color/background_gray">
 
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:layout_marginTop="44dp"
-        android:text="@string/bookings_title"
-        android:textColor="@color/moradoPrincipal"
-        android:fontFamily="@font/monument_regular"
-
-        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.007">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
-        android:layout_width="350dp"
-        android:layout_height="150dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="28dp"
-        android:background="@color/backgroundMorado"
-        app:cardCornerRadius="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4">
+        <LinearLayout
+            android:id="@+id/card_container"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="44dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@color/black">
-
-            <ImageView
-                android:id="@+id/imgViewCard3"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:scaleType="center"
-                android:src="@drawable/palenque1" />
 
             <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center"
+                android:layout_marginTop="44dp"
+                android:fontFamily="@font/monument_regular"
+                android:text="@string/bookings_title"
+                android:textColor="@color/moradoPrincipal"
+
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView3"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="3dp"
-                android:layout_marginBottom="30dp"
-                android:paddingLeft="10dp"
-                android:text="Palenque"
-                android:textColor="@color/fucsia"
-                app:layout_constraintTop_toBottomOf="@+id/imgViewCard3" />
+                android:layout_height="150dp"
+                android:layout_marginTop="28dp"
+                android:background="@color/backgroundMorado"
+                android:minHeight="150dp"
+                app:cardCornerRadius="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.122"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
+                <LinearLayout
+                    android:id="@+id/card_info_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/black"
+                    android:orientation="vertical">
 
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="-30dp"
-                android:layout_marginBottom="1dp"
-                android:paddingLeft="10dp"
-                android:text="Horario: 10pm-6am"
-                android:textColor="@color/white"
-                app:layout_constraintTop_toBottomOf="@+id/imgViewCard3" />
+                    <!--                            <ImageView-->
+                    <!--                                android:id="@+id/imgViewCard3"-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="80dp"-->
+                    <!--                                android:scaleType="center"-->
+                    <!--                                 />-->
 
-        </RelativeLayout>
+                    <!--                            <TextView-->
+                    <!--                                android:id="@+id/nombre_lugar"-->
+
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="30dp"-->
+                    <!--                                android:layout_marginStart="3dp"-->
+                    <!--                                android:layout_marginBottom="30dp"-->
+                    <!--                                android:paddingLeft="10dp"-->
+                    <!--                                android:text="Name"-->
+                    <!--                                android:textColor="@color/fucsia"-->
+                    <!--                                android:fontFamily="@font/poppins_bold"-->
+                    <!--                                app:layout_constraintTop_toBottomOf="@+id/imgViewCard3" />-->
+
+                    <!--                            <TextView-->
+                    <!--                                android:id="@+id/horario"-->
+
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="30dp"-->
+
+                    <!--                                android:layout_marginStart="1dp"-->
+                    <!--                                android:layout_marginTop="-30dp"-->
+                    <!--                                android:layout_marginBottom="1dp"-->
+                    <!--                                android:paddingLeft="10dp"-->
+                    <!--                                android:text="Horario: 10pm-6am"-->
+                    <!--                                android:textColor="@color/white"/>-->
+
+                    <!--                            <TextView-->
+                    <!--                                android:id="@+id/calle"-->
+
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="30dp"-->
+
+                    <!--                                android:layout_marginStart="1dp"-->
+                    <!--                                android:layout_marginTop="-30dp"-->
+                    <!--                                android:layout_marginBottom="1dp"-->
+                    <!--                                android:paddingStart="10dp"-->
+                    <!--                                android:text="Calle"-->
+                    <!--                                android:textColor="@color/white" />-->
+
+                </LinearLayout>
 
 
-    </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout2"

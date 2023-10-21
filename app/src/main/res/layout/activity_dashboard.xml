@@ -82,36 +82,14 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
     <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="51dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/icono_comida"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="12dp"
-        android:text="Comida"
-        android:textColor="@color/fucsia"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
-
-    <ImageView
         android:id="@+id/imageView8"
         android:layout_width="51dp"
         android:layout_height="48dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:src="@drawable/icono_microfono"
-        app:layout_constraintStart_toEndOf="@+id/imageView7"
+        app:layout_constraintEnd_toStartOf="@+id/temperatura"
+        app:layout_constraintHorizontal_bias="0.417"
+        app:layout_constraintStart_toEndOf="@+id/mapBtn"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
@@ -126,31 +104,6 @@
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView8" />
-
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="51dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/icono_reservas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.013"
-        app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="292dp"
-        android:layout_marginTop="12dp"
-        android:text="Covers"
-        android:textColor="@color/fucsia"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
     <!--
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -168,6 +121,7 @@
         app:menu="@menu/bottom_navigation_menu" />
 -->
 
+
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
@@ -177,7 +131,7 @@
         android:text="Lugares que te gustaran"
         android:textColor="@color/moradoPrincipal"
         android:textSize="23sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
@@ -287,15 +241,37 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/mapBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mapa"
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="409dp"
+        android:layout_height="180dp"
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/horizontal_linear_layout">
+
+
+<!--                <ImageView-->
+<!--                    android:layout_width="250sp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:id="@+id/imageView_bottomImages"-->
+<!--                    android:layout_marginEnd="30sp"-->
+<!--                    android:scaleType="centerInside">-->
+
+<!--                </ImageView>-->
+
+
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
 
     <!-- Barra de navegacion improvisada -->
 
@@ -309,18 +285,29 @@
 <!--        android:background="@color/navBar_background"-->
 <!--        app:itemIconTint="@color/azulClaro"/>-->
 
+    <Button
+        android:id="@+id/mapBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="280dp"
+        android:backgroundTint="@color/fucsia"
+        android:text="Mapa"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toStartOf="@+id/temperatura"
+        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ImageButton
         android:id="@+id/temperatura"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="268dp"
         android:backgroundTint="#F9128A"
         android:scaleType="centerInside"
         android:src="@drawable/cloudy"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.901"
-        app:layout_constraintStart_toStartOf="parent">
-    </ImageButton>
+        app:layout_constraintHorizontal_bias="0.845"
+        app:layout_constraintStart_toStartOf="parent"></ImageButton>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
