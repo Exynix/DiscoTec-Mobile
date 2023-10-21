@@ -88,7 +88,7 @@ class CrearMiParcheActivity : AppCompatActivity() {
 
         binding.camera.setOnClickListener {
             logger.info("Se va a solicitar el permiso")
-            verifyPermissions(this, android.Manifest.permission.CAMERA, "El permiso es requerido para acceder a la camara", "Camara")
+            verifyPermissionsCam(this, android.Manifest.permission.CAMERA, "El permiso es requerido para acceder a la camara")
         }
         binding.gallery.setOnClickListener {
             val pickGalleryImage = Intent(Intent.ACTION_PICK)
@@ -98,7 +98,7 @@ class CrearMiParcheActivity : AppCompatActivity() {
         binding.addParcero.setOnClickListener {
             adapter = ContactInfoAdapterActivity(this, null)
             binding.listaContactos.adapter = adapter
-            verifyPermissions(this, android.Manifest.permission.READ_CONTACTS, "El permiso es requerido para acceder a los contactos", "Contact")
+            verifyPermissionsCon(this, android.Manifest.permission.READ_CONTACTS, "El permiso es requerido para acceder a los contactos")
             binding.listaContactos.isVisible = true
             binding.addParcero.isVisible = false
 
@@ -133,17 +133,13 @@ class CrearMiParcheActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-    private fun verifyPermissions(context: Context, permission: String, rationale: String, tipo: String) {
+    private fun verifyPermissionsCam(context: Context, permission: String, rationale: String) {
         when {
             ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED -> {
                 Snackbar.make(binding.root, "Ya tengo los permisos 😜", Snackbar.LENGTH_LONG).show()
-                if(tipo == "Camara") {
-                    updateUICamara(true)
-                }else{
-                    binding.listaContactos.isVisible = true
-                    binding.addParcero.isVisible = false
-                    updateUIContact(true)
-                }
+
+                updateUICamara(true)
+
             }
             shouldShowRequestPermissionRationale(permission) -> {
                 // We display a snackbar with the justification for the permission, and once it disappears, we request it again.
@@ -169,6 +165,31 @@ class CrearMiParcheActivity : AppCompatActivity() {
             dipatchTakePictureIntent()
         }else{
             logger.warning("Permission denied")
+        }
+    }
+    private fun verifyPermissionsCon(context: Context, permission: String, rationale: String) {
+        when {
+            ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED -> {
+                Snackbar.make(binding.root, "Ya tengo los permisos 😜", Snackbar.LENGTH_LONG).show()
+                updateUIContact(true)
+                binding.listaContactos.isVisible = true
+                binding.addParcero.isVisible = false
+            }
+            shouldShowRequestPermissionRationale(permission) -> {
+                // Mostramos un snackbar con la justificación del permiso y una vez desaparezca volvemos a solicitarlo
+                val snackbar = Snackbar.make(binding.root, rationale, Snackbar.LENGTH_LONG)
+                snackbar.addCallback(object : Snackbar.Callback() {
+                    override fun onDismissed(snackbar: Snackbar, event: Int) {
+                        if (event == DISMISS_EVENT_TIMEOUT) {
+                            getSimplePermission.launch(permission)
+                        }
+                    }
+                })
+                snackbar.show()
+            }
+            else -> {
+                getSimplePermission.launch(permission)
+            }
         }
     }
     fun updateUIContact(permission : Boolean) {
