@@ -50,7 +50,6 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         binding.reservasBtn.setOnClickListener {
-            //val intent = Intent(applicationContext, ReservasActivity::class.java)
             val intent = Intent(applicationContext, FormularioReservaActivity::class.java)
             startActivity(intent)
         }
@@ -63,6 +62,11 @@ class DashboardActivity : AppCompatActivity() {
 
         binding.perfilBtn.setOnClickListener {
             val intent = Intent(applicationContext, PerfilActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.mapBtn.setOnClickListener {
+            val intent = Intent(applicationContext, MapsActivity::class.java)
             startActivity(intent)
         }
 

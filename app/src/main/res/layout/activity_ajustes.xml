@@ -110,6 +110,19 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             app:cornerRadius="10dp"/>
+
+        <Button
+            android:id="@+id/huellaDigitalBtn"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#65CED2"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/huella"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
     </LinearLayout>
 
 
