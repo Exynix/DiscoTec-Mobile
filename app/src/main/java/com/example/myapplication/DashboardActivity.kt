@@ -8,26 +8,22 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.ResultReceiver
-import android.util.Log
 import android.widget.Toast
 import com.example.myapplication.databinding.ActivityDashboardBinding
-import com.google.android.gms.maps.model.MapStyleOptions
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-import kotlin.math.log
+import java.util.logging.Logger
 
 class DashboardActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var sensorManager: SensorManager
-    lateinit var temperatureSensor: Sensor
-    lateinit var temperatureSensorListener: SensorEventListener
+    private var temperatureSensor: Sensor? = null
+    private lateinit var temperatureSensorListener: SensorEventListener
     private var temperatura: Float = 0.0f
 
+    companion object {
+        val TAG: String = DashboardActivity::class.java.name
+    }
+    private val logger = Logger.getLogger(TAG)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +33,11 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        temperatureSensor = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE)!!
+        temperatureSensor = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE)
+
+        if (temperatureSensor == null) {
+            Toast.makeText(this@DashboardActivity, "Ambient temperature sensor not available on this device", Toast.LENGTH_SHORT).show()
+        }
 
         binding.paginaPrincipioBtn.setOnClickListener {
             val intent = Intent(applicationContext, DashboardActivity::class.java)
