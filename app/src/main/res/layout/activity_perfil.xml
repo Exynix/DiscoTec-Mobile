@@ -9,7 +9,7 @@
 
 
     <ImageButton
-        android:id="@+id/imageView3"
+        android:id="@+id/imagenPerfil"
         android:layout_width="182dp"
         android:layout_height="244dp"
         android:background="#00FFFFFF"

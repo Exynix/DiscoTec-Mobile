@@ -43,8 +43,6 @@ class MainActivity : AppCompatActivity() {
             val email: String = emailInput.text.toString().trim()
             val password: String = passInput.text.toString().trim()
             signInUser(email, password)
-            val intent = Intent(applicationContext, DashboardActivity::class.java)
-            startActivity(intent)
         }
 
         signUpBtn.setOnClickListener {
