@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private lateinit var mAuth: FirebaseAuth
+   private lateinit var mAuth: FirebaseAuth
 
     private lateinit var loginBtn: Button
     private lateinit var signUpBtn: Button
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mAuth = Firebase.auth
+       mAuth = Firebase.auth
 
         sh = getSharedPreferences("MyAppPreferences", MODE_PRIVATE)
 
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         loginBtn.setOnClickListener {
             val email: String = emailInput.text.toString().trim()
             val password: String = passInput.text.toString().trim()
-            signInUser(email, password)
+           signInUser(email, password)
         }
 
         signUpBtn.setOnClickListener {

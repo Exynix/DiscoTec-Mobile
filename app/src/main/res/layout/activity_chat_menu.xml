@@ -112,6 +112,107 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/usuario1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/navBar_background">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/paginaPrincipioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/icono_home"
+            android:backgroundTint="@color/navBar_background"
+            app:tint="@color/azulClaro"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="Dashboard" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/buscarBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="36dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:backgroundTint="@color/navBar_background"
+            app:tint="@color/azulClaro"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/paginaPrincipioBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/icono_busqueda"
+            android:contentDescription="Busqueda"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/reservasBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="40dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:backgroundTint="@color/navBar_background"
+            app:tint="@color/azulClaro"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buscarBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/icono_reservas"
+            android:contentDescription="Reservas"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/parcheBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+
+            android:clickable="true"
+            android:focusable="true"
+            android:backgroundTint="@color/navBar_background"
+            app:tint="@color/azulClaro"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/reservasBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/icono_parche"
+            android:contentDescription="Parches"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/perfilBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+
+            android:backgroundTint="@color/navBar_background"
+            android:clickable="true"
+            android:contentDescription="Perfil"
+            android:focusable="true"
+
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toEndOf="@+id/parcheBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/icono_perfil"
+            app:tint="@color/azulClaro" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
