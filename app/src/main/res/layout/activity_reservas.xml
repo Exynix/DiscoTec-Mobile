@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DashboardActivity"
-    android:background="@color/backgroundMorado">
+    android:background="@color/background_gray">
 
 
     <TextView
@@ -13,15 +13,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="Mis eola"
+        android:layout_marginTop="44dp"
+        android:text="@string/bookings_title"
         android:textColor="@color/moradoPrincipal"
+        android:fontFamily="@font/monument_regular"
+
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.043" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
@@ -73,62 +74,6 @@
                 android:text="Horario: 10pm-6am"
                 android:textColor="@color/white"
                 app:layout_constraintTop_toBottomOf="@+id/imgViewCard3" />
-
-        </RelativeLayout>
-
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView4"
-        android:layout_width="350dp"
-        android:layout_height="150dp"
-        android:layout_marginLeft="20dp"
-        android:background="@color/backgroundMorado"
-        app:cardCornerRadius="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView3">
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@color/black">
-
-            <ImageView
-                android:id="@+id/imgViewCard2"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:scaleType="center"
-                android:src="@drawable/palenque1" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="3dp"
-                android:layout_marginBottom="30dp"
-                android:paddingLeft="10dp"
-                android:text="Palenque"
-                android:textColor="@color/fucsia"
-                app:layout_constraintTop_toBottomOf="@+id/imgViewCard2" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="-30dp"
-                android:layout_marginBottom="1dp"
-                android:paddingLeft="10dp"
-                android:text="Horario: 10pm-6am"
-                android:textColor="@color/white"
-                app:layout_constraintTop_toBottomOf="@+id/imgViewCard2" />
 
         </RelativeLayout>
 
