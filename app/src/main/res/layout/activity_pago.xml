@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1E1E1E"
-    tools:context=".PagoReservaActivity">
+    tools:context=".PagoActivity">
 
     <TextView
         android:id="@+id/textView5"
@@ -50,7 +50,7 @@
                 android:layout_marginBottom="40dp">
 
                 <Button
-                    android:id="@+id/editarPerfil"
+                    android:id="@+id/tarjeta"
                     android:layout_width="280dp"
                     android:layout_height="60dp"
                     android:layout_marginBottom="20dp"
@@ -144,4 +144,5 @@
             </FrameLayout>
         </LinearLayout>
     </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

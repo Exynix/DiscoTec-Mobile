@@ -83,6 +83,20 @@ class EditarFotoActivity : AppCompatActivity() {
         }
     }
 
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == RESULT_OK) {
+            // Handle camera result
+            imageViewContainer!!.setImageURI(pictureImagePath)
+            imageViewContainer!!.layoutParams.width = MATCH_PARENT
+            logger.info("Image capture successfully.")
+        } else {
+            logger.warning("Image capture failed.")
+        }
+    }
+
     // Verify permission to access contacts info
     private fun verifyPermissions(context: Context, permission: String, rationale: String) {
         when {

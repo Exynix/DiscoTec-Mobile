@@ -63,4 +63,9 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
+    //QR
+    implementation("com.google.zxing:core:3.4.1") // Puedes verificar la última versión en el repositorio de Maven
+
+    // BioMetri
+    implementation("androidx.biometric:biometric:1.2.0-alpha03")
 }
