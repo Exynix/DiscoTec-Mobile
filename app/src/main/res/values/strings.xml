@@ -1,6 +1,55 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">DISCO-TEC</string>
     <string name="aceptar">Aceptar</string>
     <string name="DiscoTecTitle">Disco-Tec</string>
+    <string name="hint_password">Ingrese su contraseña</string>
+    <string name="password">contraseña</string>
+    <string name="login">Login</string>
+    <string name="signup">Signup</string>
+    <string name="hint_email">correo</string>
+    <string name="email">Ingrese su correo</string>
+    <string name="logo_principal">logo discotec</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="notificaciones">notificaciones</string>
+    <string name="preferencias">preferencias</string>
+    <string name="boton_de_busqueda">boton de busqueda</string>
+    <string name="buscar_discoteca">buscar discoteca</string>
+    <string name="campo_foto_perfil">campo foto de perfil</string>
+    <string name="pepito_lozano">pepito lozano</string>
+    <string name="cerrar_sesi_n">cerrar sesión</string>
+    <string name="eliminar_cuenta">eliminar cuenta</string>
+    <string name="barra_estetica">Barra estetica</string>
+    <string name="icono_ajustes">icono ajustes</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="editar_perfil">Editar Perfil</string>
+    <string name="privacidad_y_seguridad">Privacidad y seguridad</string>
+    <string name="centro_de_ayuda">Centro de ayuda</string>
+    <string name="foto_de_perfil">foto de perfil</string>
+
+
+    <!-- Dashboard strings -->
+
+
+    <!-- Search activity strings -->
+    <string name="search_title"> Busquedas Más frecuentes </string>
+
+    <!-- Bookings strings -->
+    <string name="bookings_title"> Mis Reservas </string>
+
+    <!-- Mi parche strings -->
+
+
+    <!-- Perfil strings -->
+
+
+    <!-- Nav bar strings -->
+    <string name="navbar_home">Explorar</string>
+    <string name="navbar_search">Buscar</string>
+    <string name="navbar_bookings">Reservas</string>
+    <string name="navbar_parches">Mis Parches</string>
+    <string name="navbar_profile">Perfil</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="huella">Activar huella digital</string>
+
 </resources>

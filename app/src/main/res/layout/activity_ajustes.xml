@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E1E1E"
+    tools:context=".AjustesActivity">
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/tuerca"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.098"
+        android:contentDescription="@string/icono_ajustes"/>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/ajustes"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.205" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.305">
+
+        <Button
+            android:id="@+id/editarPerfil"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#65CED2"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/editar_perfil"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:cornerRadius="15dp"/>
+
+        <Button
+            android:id="@+id/Notificaciones"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#65CED2"
+            android:fontFamily="sans-serif-black"
+            android:text="Notificaciones"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:cornerRadius="10dp"/>
+
+        <Button
+            android:id="@+id/PrivacidadSeguridad"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#65CED2"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/privacidad_y_seguridad"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:cornerRadius="10dp"/>
+
+        <Button
+            android:id="@+id/Preferencias"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#65CED2"
+            android:fontFamily="sans-serif-black"
+            android:text="Preferencias"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:cornerRadius="10dp"/>
+
+        <Button
+            android:id="@+id/CentroAyuda"
+            android:layout_width="280dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#65CED2"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/centro_de_ayuda"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:cornerRadius="10dp"/>
+
+        <Button
+            android:id="@+id/huellaDigitalBtn"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#65CED2"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/huella"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:cornerRadius="10dp" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E1E1E"
+    tools:context=".ComprarNightCoinsActivity">
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/night_coins"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.098"
+        android:contentDescription="@string/icono_ajustes"/>
+
+    <TextView
+        android:id="@+id/ComprarNightCoins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/monument_regular"
+        android:text="Comprar NighCoins"
+        android:textColor="#FA128B"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.26" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ComprarNightCoins"
+        app:layout_constraintVertical_bias="0.334">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="Cantidad a comprar"
+            android:textAlignment="center"
+            android:textColor="#B73ECE"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.241" />
+
+        <EditText
+            android:id="@+id/cantidadAComprar"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:inputType="number"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnCalcular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aceptar"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"/>
+
+        <TextView
+            android:id="@+id/totalNightCoins"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Tu total de NightCoins será:"
+            android:textAlignment="center"
+            android:textColor="#B73ECE"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/numeroNightCoins"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

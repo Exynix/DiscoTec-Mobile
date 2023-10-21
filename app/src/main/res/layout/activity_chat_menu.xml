@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#141414"
+    tools:context=".ChatMenuActivity">
+
+
+    <TextView
+        android:id="@+id/parche"
+        android:layout_width="310dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/monument_regular"
+        android:text="Mis Parches"
+        android:textColor="#FF128B"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/anadir"
+        android:layout_width="28dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintStart_toEndOf="@+id/parche"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/plus"
+        app:tint="#FFFFFF" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="371dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
+        android:background="#2F0040"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parche">
+
+        <EditText
+            android:id="@+id/editTextText2"
+            android:layout_width="234dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_bold"
+            android:ems="10"
+            android:hint="Buscar uno de tus parches"
+            android:inputType="text"
+            android:textColorHint="#FFFFFF" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerInside"
+            android:layout_weight="1"
+            android:paddingTop="5dp"
+            android:src="@drawable/lupa"
+            app:tint="#FFFFFF" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="408dp"
+        android:layout_height="454dp"
+        android:layout_marginBottom="4dp"
+        android:background="#6F2C7C"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/usuario1"
+            android:layout_width="370dp"
+            android:layout_height="108dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#E58CF6"
+            android:drawableRight="@drawable/noti"
+            android:text="Jhon Abraham"
+            android:textAlignment="viewStart"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:cornerRadius="20dp"
+            app:icon="@drawable/icono_perfil"
+            app:iconSize="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/usuario2"
+            android:layout_width="370dp"
+            android:layout_height="108dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#E58CF6"
+            android:drawableRight="@drawable/noti"
+            android:text="Aquiles"
+            android:fontFamily="@font/poppins_bold"
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:cornerRadius="20dp"
+            app:icon="@drawable/icono_perfil"
+            app:iconSize="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/usuario1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/navBar_background">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/paginaPrincipioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/icono_home"
+            android:backgroundTint="@color/navBar_background"
+            app:tint="@color/azulClaro"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="Dashboard" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/buscarBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="36dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:backgroundTint="@color/navBar_background"
+            app:tint="@color/azulClaro"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/paginaPrincipioBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/icono_busqueda"
+            android:contentDescription="Busqueda"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/reservasBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="40dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:backgroundTint="@color/navBar_background"
+            app:tint="@color/azulClaro"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buscarBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/icono_reservas"
+            android:contentDescription="Reservas"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/parcheBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+
+            android:clickable="true"
+            android:focusable="true"
+            android:backgroundTint="@color/navBar_background"
+            app:tint="@color/azulClaro"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/reservasBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/icono_parche"
+            android:contentDescription="Parches"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/perfilBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+
+            android:backgroundTint="@color/navBar_background"
+            android:clickable="true"
+            android:contentDescription="Perfil"
+            android:focusable="true"
+
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toEndOf="@+id/parcheBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/icono_perfil"
+            app:tint="@color/azulClaro" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
