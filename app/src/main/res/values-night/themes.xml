@@ -4,8 +4,8 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
 
-        <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView.Colored</item>
-        <item name="colorOnPrimary">@color/azulClaro</item>
-        <item name="colorPrimary">@color/grey</item>
+<!--        <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView.Colored</item>-->
+<!--        <item name="colorOnPrimary">@color/azulClaro</item>-->
+<!--        <item name="colorPrimary">@color/grey</item>-->
     </style>
 </resources>

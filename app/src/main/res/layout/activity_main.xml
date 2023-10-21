@@ -48,8 +48,10 @@
             android:id="@+id/loginBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/fucsia"
             android:fontFamily="@font/poppins"
             android:text="@string/login"
+            android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +77,8 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/fucsia"
                 android:fontFamily="@font/poppins"
-                android:text="@string/login" />
+                android:text="@string/login"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/gotoSignUpBtn"

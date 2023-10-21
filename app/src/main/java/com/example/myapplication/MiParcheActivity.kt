@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -19,8 +20,30 @@ class MiParcheActivity : AppCompatActivity() {
 
         volverBtn = binding.button4
 
-        volverBtn.setOnClickListener {
-            finish()
+        binding.paginaPrincipioBtn.setOnClickListener {
+            val intent = Intent(applicationContext, DashboardActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.buscarBtn.setOnClickListener {
+            val intent = Intent(applicationContext, SearchActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.reservasBtn.setOnClickListener {
+            val intent = Intent(applicationContext, ReservasActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        binding.parcheBtn.setOnClickListener{
+            val intent = Intent(applicationContext, MiParcheActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.perfilBtn.setOnClickListener {
+            val intent = Intent(applicationContext, PerfilActivity::class.java)
+            startActivity(intent)
         }
     }
 }
