@@ -5,11 +5,14 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
+import android.provider.ContactsContract
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
@@ -33,18 +36,31 @@ class CrearMiParcheActivity : AppCompatActivity() {
     private val logger = Logger.getLogger(TAG)
     private val getSimplePermission = registerForActivityResult(
         ActivityResultContracts.RequestPermission()) {
-        updateUI(it)
+        updateUICamara(it)
+        updateUIContact(it)
+
     }
+    val projection = arrayOf(
+        ContactsContract.Contacts._ID,
+        ContactsContract.Contacts.DISPLAY_NAME_PRIMARY,
+        ContactsContract.Contacts.STARRED,
+        ContactsContract.Contacts.PHOTO_URI)
     var pictureImagePath: Uri? = null
-    var imageViewContainer: ImageView? = null
+    //var imageViewContainer: ImageView? = null
+    val filter = "${ContactsContract.Contacts.DISPLAY_NAME_PRIMARY} IS NOT NULL"
+    val order = "${ContactsContract.Contacts.DISPLAY_NAME_PRIMARY} COLLATE NOCASE"
+    lateinit var adapter: ContactInfoAdapterActivity
+
 
     private val cameraActivityResultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == RESULT_OK) {
             // Handle camera result
-            imageViewContainer!!.setImageURI(pictureImagePath)
-            imageViewContainer!!.setScaleType(ImageView.ScaleType.FIT_CENTER)
-            imageViewContainer!!.setAdjustViewBounds(true)
+            binding.imageView!!.setImageURI(pictureImagePath)
+           // binding.imageView!!.setScaleType(ImageView.ScaleType.FIT_CENTER)
+           // binding.imageView!!.setAdjustViewBounds(true)
+            binding.imageView!!.scaleType = ImageView.ScaleType.FIT_CENTER
+            binding.imageView!!.adjustViewBounds = true
             logger.info("Image capture successfully.")
         } else {
             logger.warning("Image capture failed.")
@@ -54,8 +70,10 @@ class CrearMiParcheActivity : AppCompatActivity() {
         ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == RESULT_OK) {
             // Handle gallery result
-            val imageUri: Uri? = result.data!!.data
-            imageViewContainer!!.setImageURI(imageUri)
+           // val imageUri: Uri? = result.data!!.data
+            val data: Intent? = result.data
+            val imageUri: Uri? = data?.data
+            binding.imageView!!.setImageURI(imageUri)
             logger.info("Image loaded successfully")
         }
     }
@@ -66,23 +84,32 @@ class CrearMiParcheActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.listaContactos.isVisible = false
-        imageViewContainer = binding.imageView
-        logger.info("Se va a solicitar el permiso")
+       // imageViewContainer = binding.imageView
+
         binding.camera.setOnClickListener {
-            verifyPermissions(this, android.Manifest.permission.CAMERA, "El permiso es requerido para acceder a la camara")
+            logger.info("Se va a solicitar el permiso")
+            verifyPermissions(this, android.Manifest.permission.CAMERA, "El permiso es requerido para acceder a la camara", "Camara")
         }
         binding.gallery.setOnClickListener {
             val pickGalleryImage = Intent(Intent.ACTION_PICK)
             pickGalleryImage.type = "image/*"
             galleryActivityResultLauncher.launch(pickGalleryImage)
         }
+        adapter = ContactInfoAdapterActivity(this, null)
+        binding.listaContactos.adapter = adapter
+
+        verifyPermissions(this, android.Manifest.permission.READ_CONTACTS, "El permiso es requerido para acceder a los contactos", "Contact")
 
     }
-    private fun verifyPermissions(context: Context, permission: String, rationale: String) {
+    private fun verifyPermissions(context: Context, permission: String, rationale: String, tipo: String) {
         when {
             ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED -> {
                 Snackbar.make(binding.root, "Ya tengo los permisos 😜", Snackbar.LENGTH_LONG).show()
-                updateUI(true)
+                if(tipo == "Camara") {
+                    updateUICamara(true)
+                }else{
+                    updateUIContact(true)
+                }
             }
             shouldShowRequestPermissionRationale(permission) -> {
                 // We display a snackbar with the justification for the permission, and once it disappears, we request it again.
@@ -101,13 +128,24 @@ class CrearMiParcheActivity : AppCompatActivity() {
             }
         }
     }
-    fun updateUI(permission : Boolean) {
+    fun updateUICamara(permission : Boolean) {
         if(permission){
             //granted
             logger.info("Permission granted")
             dipatchTakePictureIntent()
         }else{
             logger.warning("Permission denied")
+        }
+    }
+    fun updateUIContact(permission : Boolean) {
+        if(permission){
+            //granted
+            Log.i("Permission: ", "Granted")
+            // Assigning a cursor to init the adapter
+            val cursor: Cursor? = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, projection, filter, null, order)
+            adapter.changeCursor(cursor)
+        }else{
+            Log.i("Permission: ", "Denied")
         }
     }
     fun dipatchTakePictureIntent() {
@@ -122,7 +160,7 @@ class CrearMiParcheActivity : AppCompatActivity() {
         // Continua si el archivo ha sido creado exitosamente
         if (imageFile != null) {
             // Guardar un archivo: Ruta para usar con ACTION_VIEW intents
-            pictureImagePath = FileProvider.getUriForFile(this,"com.example.android.file-provider", imageFile)
+            pictureImagePath = FileProvider.getUriForFile(this,"com.example.myapplication.fileprovider", imageFile)
             logger.info("Ruta: ${pictureImagePath}")
             takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, pictureImagePath)
             try {
@@ -139,6 +177,10 @@ class CrearMiParcheActivity : AppCompatActivity() {
         val imageFileName = "${timeStamp}.jpg"
         val imageFile = File(getExternalFilesDir(Environment.DIRECTORY_PICTURES),imageFileName)
         return imageFile
+    }
+    override fun onResume() {
+        super.onResume()
+        Log.w("Callback: ", "onResume")
     }
 
 }
