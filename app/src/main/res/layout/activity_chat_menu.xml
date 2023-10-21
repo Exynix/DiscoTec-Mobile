@@ -12,12 +12,12 @@
         android:id="@+id/parche"
         android:layout_width="310dp"
         android:layout_height="63dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/monument_regular"
         android:text="Mis Parches"
         android:textColor="#FF128B"
-        android:textSize="34sp"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
