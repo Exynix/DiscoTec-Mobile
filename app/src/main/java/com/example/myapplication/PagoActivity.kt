@@ -1,16 +1,16 @@
 package com.example.myapplication
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.myapplication.databinding.ActivityPagoReservaBinding
+import android.content.Intent
+import com.example.myapplication.databinding.ActivityPagoBinding
 
-class PagoReserva : AppCompatActivity() {
-    private lateinit var binding: ActivityPagoReservaBinding
+class PagoActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityPagoBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityPagoReservaBinding.inflate(layoutInflater)
+        binding = ActivityPagoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val CantidadPersonas = intent.getStringExtra("CantidadPersonas")

@@ -26,7 +26,7 @@ class FormularioReservaActivity : AppCompatActivity(), View.OnClickListener {
         binding.fecha.setOnClickListener(this)
 
         binding.convencional.setOnClickListener {
-            val intent = Intent(applicationContext, PagoReserva::class.java)
+            val intent = Intent(applicationContext, PagoActivity::class.java)
             intent.putExtra("CantidadPersonas", binding.cant.text.toString())
             intent.putExtra("Fecha", binding.fecha.text.toString())
             intent.putExtra("Hora", binding.hora1.text.toString())

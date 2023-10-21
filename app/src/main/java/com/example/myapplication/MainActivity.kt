@@ -35,9 +35,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var emailInput: EditText
     private lateinit var passInput: EditText
     private lateinit var biometricBtn: FloatingActionButton
-
     private lateinit var sh: SharedPreferences
-
     private lateinit var executor: Executor
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: PromptInfo

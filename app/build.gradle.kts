@@ -66,7 +66,6 @@ dependencies {
     //QR
     implementation("com.google.zxing:core:3.4.1") // Puedes verificar la última versión en el repositorio de Maven
 
-
-    // BioMetric
+    // BioMetri
     implementation("androidx.biometric:biometric:1.2.0-alpha03")
 }

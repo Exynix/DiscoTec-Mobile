@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.myapplication.databinding.ActivityComprobanteReservaBinding
-import com.example.myapplication.databinding.ActivityPagoReservaBinding
 
 class ComprobanteReservaActivity : AppCompatActivity() {
 
