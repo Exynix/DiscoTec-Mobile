@@ -32,12 +32,13 @@
 
         <TextView
             android:id="@+id/formulario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
+            android:layout_width="300dp"
+            android:layout_height="56dp"
+            android:fontFamily="@font/monument_regular"
             android:text="Formulario de reserva"
+            android:textAlignment="center"
             android:textColor="#FA128B"
-            android:textSize="30sp" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/cantidadpersonas"
