@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1E1E1E"
-    tools:context=".EditarPerfil">
+    tools:context=".EditarPerfilActivity">
 
 
     <FrameLayout
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.05">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/imagenPerfil"
             android:layout_width="182dp"
             android:layout_height="244dp"
             android:background="#00FFFFFF"
@@ -29,6 +29,7 @@
             android:src="@drawable/perfil" />
 
         <ImageButton
+            android:id="@+id/editarFotoBtn"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:backgroundTint="#00FFFFFF"
@@ -124,8 +125,8 @@
 
         <Button
             android:id="@+id/correo"
-            android:layout_width="280dp"
-            android:layout_height="43dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:backgroundTint="#B73ECE"
             android:gravity="left"
