@@ -4,84 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundMorado"
-    tools:context=".DashboardActivity">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="366dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="19dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.355"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12"
-        app:layout_constraintVertical_bias="1.0">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/paginaPrinciBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:contentDescription="aaaa"
-            android:src="@android:drawable/ic_input_add"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/buscarBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:clickable="true"
-            android:contentDescription="aaaaaaa"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/paginaPrinciBtn"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/ic_menu_search" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/reservasBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:clickable="true"
-            android:contentDescription="aaaaa"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/buscarBtn"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/ic_menu_call" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/mapaBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:clickable="true"
-            android:contentDescription="aaaaaaaaa"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/reservasBtn"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.75"
-            app:srcCompat="@android:drawable/ic_dialog_map" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/perfilBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="7dp"
-            android:clickable="true"
-            android:contentDescription="aaaaaaa"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.516"
-            app:layout_constraintStart_toEndOf="@+id/mapaBtn"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/ic_menu_info_details" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    android:background="@color/background_gray"
+    tools:context=".DashboardActivity"
+    >
 
     <TextView
         android:id="@+id/textView3"
@@ -92,6 +17,7 @@
         android:text="@string/DiscoTecTitle"
         android:textColor="@color/moradoPrincipal"
         android:textSize="40dp"
+        android:fontFamily="@font/monument_regular"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -144,15 +70,16 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
 
+        android:fontFamily="@font/poppins_bold"
         android:text="Promociones con NightCoins"
         android:textColor="@color/moradoPrincipal"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        android:textSize="23sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2"
-        app:layout_constraintVertical_bias="0.12" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -160,7 +87,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="48dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/baseline_food_bank_24"
+        android:src="@drawable/icono_comida"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -183,7 +110,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="76dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/baseline_mic_external_on_24"
+        android:src="@drawable/icono_microfono"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -206,7 +133,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="60dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/baseline_bento_24"
+        android:src="@drawable/icono_reservas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.013"
         app:layout_constraintStart_toEndOf="@+id/imageView8"
@@ -225,83 +152,152 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:text="Lugares que te gustaran"
-        android:textColor="@color/moradoPrincipal"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.392"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.407" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="16dp"
-        app:cardCornerRadius="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12">
-
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-
-            android:scaleType="center"
-            android:src="@drawable/palenque1" />
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView4"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="12dp"
-
-        app:cardCornerRadius="16sp"
-        app:layout_constraintStart_toEndOf="@+id/cardView3"
-
-        app:layout_constraintTop_toBottomOf="@+id/textView12">
-
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-
-            android:scaleType="center"
-            android:src="@drawable/theatron1" />
-
-    </androidx.cardview.widget.CardView>
-
+    <!--
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/backgroundNavBar"
-        android:theme="@style/Theme.App"
+        android:theme="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation_menu" />
+-->
 
-    <Button
-        android:id="@+id/SignOut"
+    <TextView
+        android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SignOut"
+
+        android:fontFamily="@font/poppins_bold"
+        android:text="Lugares que te gustaran"
+        android:textColor="@color/moradoPrincipal"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14"
+        app:layout_constraintVertical_bias="0.133" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/navBar_background">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/paginaPrincipioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/icono_home"
+            android:backgroundTint="@color/navBar_background"
+            app:tint="@color/azulClaro"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="Dashboard" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/buscarBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="36dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:backgroundTint="@color/navBar_background"
+            app:tint="@color/azulClaro"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/paginaPrincipioBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/icono_busqueda"
+            android:contentDescription="Busqueda"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/reservasBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="40dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:backgroundTint="@color/navBar_background"
+            app:tint="@color/azulClaro"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buscarBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/icono_reservas"
+            android:contentDescription="Reservas"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/parcheBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+
+            android:clickable="true"
+            android:focusable="true"
+            android:backgroundTint="@color/navBar_background"
+            app:tint="@color/azulClaro"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/reservasBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/icono_parche"
+            android:contentDescription="Parches"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/perfilBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+
+            android:backgroundTint="@color/navBar_background"
+            android:clickable="true"
+            android:contentDescription="Perfil"
+            android:focusable="true"
+
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toEndOf="@+id/parcheBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/icono_perfil"
+            app:tint="@color/azulClaro" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Barra de navegacion improvisada -->
+
+
+    <!--    <com.google.android.material.bottomnavigation.BottomNavigationView>-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:menu="@menu/bottom_navigation_menu"-->
+<!--        android:background="@color/navBar_background"-->
+<!--        app:itemIconTint="@color/azulClaro"/>-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
