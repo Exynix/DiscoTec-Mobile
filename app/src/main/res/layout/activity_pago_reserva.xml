@@ -50,7 +50,7 @@
                 android:layout_marginBottom="40dp">
 
                 <Button
-                    android:id="@+id/editarPerfil"
+                    android:id="@+id/tarjeta"
                     android:layout_width="280dp"
                     android:layout_height="60dp"
                     android:layout_marginBottom="20dp"

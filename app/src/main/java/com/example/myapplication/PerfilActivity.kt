@@ -32,7 +32,8 @@ class PerfilActivity : AppCompatActivity() {
         }
 
         binding.EliminarCuenta.setOnClickListener {
-            // TO DO
+            val intent = Intent(applicationContext, AjustesActivity::class.java)
+            startActivity(intent)
         }
 
         binding.paginaPrincipioBtn.setOnClickListener {

@@ -299,5 +299,18 @@
 <!--        android:background="@color/navBar_background"-->
 <!--        app:itemIconTint="@color/azulClaro"/>-->
 
+    <ImageButton
+        android:id="@+id/temperatura"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="#F9128A"
+        android:scaleType="centerInside"
+        android:src="@drawable/cloudy"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.901"
+        app:layout_constraintStart_toStartOf="parent">
+    </ImageButton>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

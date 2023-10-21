@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -22,6 +23,15 @@ class FormularioReservaActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
 
         binding.fecha.setOnClickListener(this)
+
+        binding.convencional.setOnClickListener {
+            val intent = Intent(applicationContext, PagoReserva::class.java)
+            intent.putExtra("CantidadPersonas", binding.cant.text.toString())
+            intent.putExtra("Fecha", binding.fecha.text.toString())
+            intent.putExtra("Hora", binding.hora1.text.toString())
+            intent.putExtra("Comentario", binding.comentario.text.toString())
+            startActivity(intent)
+        }
     }
 
     override fun onClick(p0: View?) {
