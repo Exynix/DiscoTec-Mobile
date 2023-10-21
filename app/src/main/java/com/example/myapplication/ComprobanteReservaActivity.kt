@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.myapplication.databinding.ActivityComprobanteReservaBinding
@@ -23,5 +24,14 @@ class ComprobanteReservaActivity : AppCompatActivity() {
         binding.intentTitular.setText("User")
         binding.intentEstado.setText("Completo y Pago")
         binding.intentLugar.setText("PalenqueRoofTop")
+
+        binding.Continuar.setOnClickListener {
+            val intent = Intent(applicationContext, QrActivity::class.java)
+            intent.putExtra("CantidadPersonas", CantidadPersonas)
+            intent.putExtra("Fecha", Fecha)
+            intent.putExtra("Hora", Hora)
+            intent.putExtra("Comentario", Comentario)
+            startActivity(intent)
+        }
     }
 }

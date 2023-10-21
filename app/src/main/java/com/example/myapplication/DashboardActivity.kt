@@ -39,8 +39,6 @@ class DashboardActivity : AppCompatActivity() {
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         temperatureSensor = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE)!!
 
-
-
         binding.paginaPrincipioBtn.setOnClickListener {
             val intent = Intent(applicationContext, DashboardActivity::class.java)
             startActivity(intent)
@@ -52,7 +50,8 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         binding.reservasBtn.setOnClickListener {
-            val intent = Intent(applicationContext, ReservasActivity::class.java)
+            //val intent = Intent(applicationContext, ReservasActivity::class.java)
+            val intent = Intent(applicationContext, FormularioReservaActivity::class.java)
             startActivity(intent)
         }
 
@@ -83,7 +82,7 @@ class DashboardActivity : AppCompatActivity() {
         binding.temperatura.setOnClickListener {
             Toast.makeText(
                 this@DashboardActivity,
-                "La temperatura actual es de $temperatura grados",
+                "La temperatura actual es de $temperatura °C",
                 Toast.LENGTH_SHORT
             ).show()
         }

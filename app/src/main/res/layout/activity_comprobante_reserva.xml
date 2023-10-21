@@ -149,7 +149,7 @@
             app:cornerRadius="10dp" />
 
         <Button
-            android:id="@+id/pagoNC"
+            android:id="@+id/Continuar"
             android:layout_width="130dp"
             android:layout_height="48dp"
             android:layout_gravity="center"

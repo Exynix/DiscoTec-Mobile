@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.app.TimePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -58,5 +59,25 @@ class FormularioReservaActivity : AppCompatActivity(), View.OnClickListener {
         override fun onDateSet(p0: DatePicker?, year: Int, month: Int, day: Int) {
             listener(year,month,day)
         }
+    }
+
+    // Este método se llama cuando se hace clic en el EditText
+    fun showTimePickerDialog(view: android.view.View) {
+        val cal = Calendar.getInstance()
+        val hour = cal.get(Calendar.HOUR_OF_DAY)
+        val minute = cal.get(Calendar.MINUTE)
+
+        val timePickerDialog = TimePickerDialog(
+            this,
+            TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
+                // Aquí obtienes la hora seleccionada y puedes actualizar el EditText
+                val formattedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
+                binding.hora1.setText(formattedTime)
+            },
+            hour,
+            minute,
+            true
+        )
+        timePickerDialog.show()
     }
 }

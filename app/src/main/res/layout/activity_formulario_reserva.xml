@@ -100,7 +100,8 @@
             android:layout_marginBottom="15dp"
             android:backgroundTint="#B73ECE"
             android:gravity="left"
-            android:inputType="number"
+            android:inputType="none"
+            android:onClick="showTimePickerDialog"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:cornerRadius="10dp" />
