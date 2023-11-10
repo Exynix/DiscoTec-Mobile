@@ -114,7 +114,7 @@ class ReservasActivity : AppCompatActivity() {
                     linearLayout.addView(imageView)
                     Log.i(TAG, "url imagen" + imageUrl.toString())
 
-                    val imageLayoutParams = LinearLayout.LayoutParams(100, LinearLayout.LayoutParams.MATCH_PARENT)
+                    val imageLayoutParams = LinearLayout.LayoutParams( LinearLayout.LayoutParams.MATCH_PARENT, 150)
                     imageView.layoutParams = imageLayoutParams
                     imageView.scaleType = ImageView.ScaleType.CENTER_CROP
                     imageView.requestLayout()
