@@ -14,6 +14,11 @@ class ChatMenuActivity : AppCompatActivity() {
         binding = ActivityChatMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Cargar todos los parches que tiene la persona
+
+
+
+
         binding.usuario1.setOnClickListener {
             val intent = Intent(applicationContext, VistaChatActivity::class.java)
             startActivity(intent)
