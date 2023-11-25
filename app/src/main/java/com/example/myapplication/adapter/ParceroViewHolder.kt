@@ -1,14 +1,11 @@
 package com.example.myapplication.adapter
 
 import android.graphics.Color
-import android.net.Uri
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.Model.User
+import com.example.myapplication.model.User
 import com.example.myapplication.R
 import com.example.myapplication.databinding.InfoUsuarioBinding
-import org.json.JSONObject
 
 class ParceroViewHolder (view: View) : RecyclerView.ViewHolder(view) {
 

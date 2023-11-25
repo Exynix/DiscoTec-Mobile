@@ -7,6 +7,7 @@ class User {
     var correo: String = ""
 
     constructor()
+
     constructor(nombre: String, nroId: Long, correo: String) {
         this.nombre = nombre
         this.nroId = nroId

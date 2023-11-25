@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.model.Parche
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.StorageReference
 
 
-class ParcheChatApadter(private val context: ValueEventListener, private val parcheList:ArrayList<parcheModel>) : RecyclerView.Adapter<ParcheChatApadter.ViewHolder>(){
+class ParcheChatApadter(private val context: ValueEventListener, private val parcheList:ArrayList<Parche>) : RecyclerView.Adapter<ParcheChatApadter.ViewHolder>(){
     private lateinit var storageRef: StorageReference
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_parche, parent, false)
@@ -22,7 +23,7 @@ class ParcheChatApadter(private val context: ValueEventListener, private val par
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val parche: parcheModel = parcheList[position]
+        val parche: Parche = parcheList[position]
         holder.txtParcheName.text = parche.Nombre
         holder.ParcheDescripcion.text = parche.Descripcion
         holder.ParcheImg.setImageResource(R.drawable.chat)
