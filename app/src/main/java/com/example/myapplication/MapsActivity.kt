@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.hardware.Sensor
@@ -14,7 +12,6 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.location.Geocoder
 import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -22,31 +19,44 @@ import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.example.myapplication.databinding.ActivityMapsBinding
+import com.example.myapplication.lookupTableClasses.UserType
+import com.example.myapplication.model.User
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.LocationSettingsRequest
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
+import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.Polyline
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 import java.util.logging.Logger
+import com.google.firebase.database.DatabaseError
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -70,6 +80,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private var start: String =""
     private var end: String =""
     private var poly: Polyline? = null
+    private var userLocationMarker: Marker? = null
+    private var otherLocationMarker: Marker? = null
+    private lateinit var dbRef: DatabaseReference
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var latLngActual: LatLng
+    private lateinit var latLngOtro: LatLng
+
+
 
     // Permission handler
     private val getSimplePermission = registerForActivityResult(
@@ -128,6 +146,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         // Initialize the geocoder
         mGeocoder = Geocoder(baseContext)
+
+        mAuth = Firebase.auth
+        dbRef = FirebaseDatabase.getInstance().getReference("Usuarios")
+
     }
 
     override fun onResume() {
@@ -160,6 +182,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * installed Google Play services and returned to the app.
      */
     override fun onMapReady(googleMap: GoogleMap) {
+        val user = mAuth.currentUser
         mMap = googleMap
         isMapReady = true
         mMap.moveCamera(CameraUpdateFactory.zoomTo(20f))
@@ -179,6 +202,39 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 SensorManager.SENSOR_DELAY_NORMAL
             )
         }
+        obtenerUbicacion(user.toString())
+    }
+
+    private fun obtenerUbicacion(key: String?){
+        dbRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (userSnapshot in dataSnapshot.children) {
+                    val usuario = userSnapshot.getValue(User::class.java)
+                    // Guardar latitud y longitud del otroUsuario
+                    if (usuario != null && usuario.correo == key) {
+                        val latitud = usuario.latitud
+                        val longitud = usuario.longitud
+                        latLngActual = LatLng(latitud, longitud)
+                        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngActual, 15f))
+                        if (otherLocationMarker == null) {
+                            otherLocationMarker = mMap.addMarker(
+                                MarkerOptions().position(latLngActual)
+                                    .title("posición otro")
+                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+                            )
+                        } else {
+                            // Actualiza la posición del marcador existente
+                            otherLocationMarker?.position = latLngActual
+                        }
+                    }
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Maneja errores si es necesario
+                Toast.makeText(this@MapsActivity, "Error", Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
     // ----------------- PERMISOS ----------------------------------------------------------------------------
