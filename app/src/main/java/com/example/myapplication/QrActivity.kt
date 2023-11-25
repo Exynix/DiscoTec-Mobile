@@ -47,9 +47,9 @@ class QrActivity : AppCompatActivity() {
                 }
             }
 
-            val intent = Intent(this, DetallesReservaActivity::class.java)
-            intent.putExtra("RESERVATION_INFO", content)
-            startActivity(intent)
+//            val intent = Intent(this, DetallesReservaActivity::class.java)
+//            intent.putExtra("RESERVATION_INFO", content)
+//            startActivity(intent)
             return bmp
         } catch (e: WriterException) {
             e.printStackTrace()
