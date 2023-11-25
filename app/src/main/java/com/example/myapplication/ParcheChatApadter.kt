@@ -24,8 +24,8 @@ class ParcheChatApadter(private val context: ValueEventListener, private val par
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val parche: Parche = parcheList[position]
-        holder.txtParcheName.text = parche.Nombre
-        holder.ParcheDescripcion.text = parche.Descripcion
+        holder.txtParcheName.text = parche.nombre
+        holder.ParcheDescripcion.text = parche.parcheDescription
         holder.ParcheImg.setImageResource(R.drawable.chat)
         // Buscar la img en la BD
         //storageRef = FirebaseStorage.getInstance().reference.child("Images/${parche.parcheImg}")

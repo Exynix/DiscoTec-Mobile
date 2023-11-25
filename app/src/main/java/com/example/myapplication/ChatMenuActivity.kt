@@ -52,7 +52,7 @@ class ChatMenuActivity : AppCompatActivity() {
                             override fun onDataChange(snapshot: DataSnapshot) {
                                 val parche = snapshot.getValue(Parche::class.java)
                                 parche?.let {
-                                    var parche = Parche(it.Nombre, it.Descripcion, it.Img)
+                                    var parche = Parche(it.nombre, it.parcheDescription, it.parcheImg)
                                     parcheList2.add(parche)
                                     parcheAdapter = ParcheChatApadter(this, parcheList2)
                                     parcheAdapter.notifyDataSetChanged()
