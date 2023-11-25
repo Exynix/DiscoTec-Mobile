@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.Model.Parche
 import com.example.myapplication.Model.User
 import com.example.myapplication.adapter.ParceroAdapter
 import com.example.myapplication.databinding.ActivityCrearMiParcheBinding
@@ -45,7 +46,8 @@ class CrearMiParcheActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var dbRef: DatabaseReference
 
-    val usuariosActivos = mutableListOf<User>()
+    val usuarios = mutableListOf<User>()
+    val usuariosSeleccionados = mutableListOf<User>()
 
     companion object {
         val TAG: String = CrearMiParcheActivity::class.java.name
@@ -62,11 +64,11 @@ class CrearMiParcheActivity : AppCompatActivity() {
         ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == RESULT_OK) {
             // Handle camera result
-            binding.imageView!!.setImageURI(pictureImagePath)
+            binding.imageView.setImageURI(pictureImagePath)
            // binding.imageView!!.setScaleType(ImageView.ScaleType.FIT_CENTER)
            // binding.imageView!!.setAdjustViewBounds(true)
-            binding.imageView!!.scaleType = ImageView.ScaleType.FIT_CENTER
-            binding.imageView!!.adjustViewBounds = true
+            binding.imageView.scaleType = ImageView.ScaleType.FIT_CENTER
+            binding.imageView.adjustViewBounds = true
             logger.info("Image capture successfully.")
         } else {
             logger.warning("Image capture failed.")
@@ -123,6 +125,12 @@ class CrearMiParcheActivity : AppCompatActivity() {
             val intent = Intent(applicationContext, PerfilActivity::class.java)
             startActivity(intent)
         }
+
+        binding.accept.setOnClickListener {
+            createParche()
+            finish()
+        }
+
         setup()
         mAuth = FirebaseAuth.getInstance()
         val user = mAuth.currentUser
@@ -130,21 +138,49 @@ class CrearMiParcheActivity : AppCompatActivity() {
         crearLista(idUsuario)
     }
 
+    private fun createParche() {
+        val parcheName = binding.editTextText.text.toString()
+        val parcheImg = binding.imageView.toString()
+        val parche = Parche(parcheName, "", parcheImg)
+
+        dbRef = Firebase.database.reference.child("Parche")
+        val parcheId = dbRef.push().key
+        if (parcheId != null) {
+            dbRef.child(parcheId).setValue(parche)
+        }
+
+        usuariosSeleccionados.forEach {
+            dbRef = Firebase.database.reference.child("users").child(it.key!!).child("Parches")
+            val id = dbRef.push().key
+            if (parcheId != null && id != null) {
+                dbRef.child(id).setValue(parcheId)
+            }
+        }
+
+        dbRef = Firebase.database.reference.child("users").child(mAuth.currentUser!!.uid).child("Parches")
+        val id = dbRef.push().key
+        if (parcheId != null && id != null) {
+            dbRef.child(id).setValue(parcheId)
+        }
+
+    }
+
     private fun crearLista(idUsuario: String?) {
         dbRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                usuariosActivos.clear()
+                usuarios.clear()
                 for (userSnapshot in dataSnapshot.children) {
                     val usuario = userSnapshot.getValue(User::class.java)
                     if (usuario != null && usuario.key != idUsuario) {
                         val nombre = usuario.nombre
                         val correo = usuario.correo
                         val nroId = usuario.nroId
-                        // Haz algo con el nombre y el correo electrónico, como mostrarlos en tu ListView
-                        usuariosActivos.add(User(nombre, nroId, correo))
+                        val user = User(nombre, nroId, correo)
+                        user.key = userSnapshot.key
+                        usuarios.add(user)
                     }
                 }
-                if (usuariosActivos.isNotEmpty()) {
+                if (usuarios.isNotEmpty()) {
                     initRecyclerView()
                 }
             }
@@ -163,7 +199,7 @@ class CrearMiParcheActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
         binding.listaContactos.layoutManager = LinearLayoutManager(this)
-        binding.listaContactos.adapter = ParceroAdapter(usuariosActivos)
+        binding.listaContactos.adapter = ParceroAdapter(usuarios, usuariosSeleccionados)
     }
 
     private fun verifyPermissionsCam(context: Context, permission: String, rationale: String) {
@@ -200,6 +236,7 @@ class CrearMiParcheActivity : AppCompatActivity() {
             logger.warning("Permission denied")
         }
     }
+
     fun dipatchTakePictureIntent() {
         val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         // Crear el archivo donde debería ir la foto
