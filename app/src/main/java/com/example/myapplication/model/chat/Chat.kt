@@ -4,7 +4,7 @@ import java.sql.Timestamp
 
 class Chat constructor(
     val id: String,
-    val created: Timestamp,
-    var messages: List<Message>
+    //val created: Timestamp,
+    var messages: ArrayList<String>
 ){
 }
