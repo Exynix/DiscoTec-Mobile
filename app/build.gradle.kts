@@ -56,6 +56,8 @@ dependencies {
     implementation("com.google.firebase:firebase-auth-ktx:22.1.2")
     implementation("com.google.firebase:firebase-database-ktx")
     implementation("com.google.firebase:firebase-storage-ktx")
+    //implementation ("com.google.zxing:core:3.4.1")
+    //implementation ("com.journeyapps:zxing-android-embedded:4.0.0")
 
     // Display de imagenes
     implementation ("com.github.bumptech.glide:glide:4.12.0")

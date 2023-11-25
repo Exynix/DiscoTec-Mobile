@@ -26,13 +26,14 @@ import com.google.firebase.storage.ktx.storage
 
 import java.util.logging.Logger
 
-class DashboardActivity : AppCompatActivity() {
+class DashboardActivity : AppCompatActivity(), SensorEventListener {
 
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var sensorManager: SensorManager
-    private var temperatureSensor: Sensor? = null
-    private lateinit var temperatureSensorListener: SensorEventListener
-    private var temperatura: Float = 0.0f
+    val stepCounterSensor: Sensor? = null
+    private lateinit var stepCounterSensorListener: SensorEventListener
+   // private var temperatura: Float = 0.0f
+
 
     companion object {
         val TAG: String = DashboardActivity::class.java.name
@@ -47,9 +48,13 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        temperatureSensor = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE)
+        val stepCounterSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
+        //temperatureSensor = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE)
 
-        if (temperatureSensor == null) {
+        /*if (temperatureSensor == null) {
+            Toast.makeText(this@DashboardActivity, "Ambient temperature sensor not available on this device", Toast.LENGTH_SHORT).show()
+        }*/
+        if (stepCounterSensor == null) {
             Toast.makeText(this@DashboardActivity, "Ambient temperature sensor not available on this device", Toast.LENGTH_SHORT).show()
         }
 
@@ -154,14 +159,14 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        temperatureSensorListener = object : SensorEventListener {
+        /*temperatureSensorListener = object : SensorEventListener {
             override fun onSensorChanged(event: SensorEvent) {
                 temperatura = event.values[0]
             }
             override fun onAccuracyChanged(sensor: Sensor, i: Int) {}
-        }
+        }*/
 
-        sensorManager.registerListener(
+       /* sensorManager.registerListener(
             temperatureSensorListener,
             temperatureSensor,
             SensorManager.SENSOR_DELAY_NORMAL
@@ -173,21 +178,41 @@ class DashboardActivity : AppCompatActivity() {
                 "La temperatura actual es de $temperatura °C",
                 Toast.LENGTH_SHORT
             ).show()
-        }
+        }*/
     }
 
     override fun onResume() {
         super.onResume()
-            sensorManager.registerListener(
-                temperatureSensorListener,
-                temperatureSensor,
+        stepCounterSensor?.let {
+            sensorManager.registerListener(stepCounterSensorListener, it, SensorManager.SENSOR_DELAY_NORMAL)
+        }
+           /* sensorManager.registerListener(
+                //temperatureSensorListener,
+                //temperatureSensor,
                 SensorManager.SENSOR_DELAY_NORMAL
-            )
+            )*/
     }
 
     override fun onPause() {
         super.onPause()
-            sensorManager.unregisterListener(temperatureSensorListener)
+        sensorManager.unregisterListener(stepCounterSensorListener)
+            //sensorManager.unregisterListener(temperatureSensorListener)
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+        // No es necesario implementar este método para el podómetro
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        var stepCount: Int = 0
+        // Manejar los cambios en el sensor de podómetro
+        if (event?.sensor?.type == Sensor.TYPE_STEP_COUNTER) {
+            // Actualizar el contador de pasos
+            stepCount = event.values[0].toInt()
+
+            // Mostrar el número de pasos en un TextView
+            binding.pasos.text = "$stepCount"
+        }
     }
 
 }
