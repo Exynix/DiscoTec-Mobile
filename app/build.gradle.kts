@@ -59,6 +59,7 @@ dependencies {
 
     // Display de imagenes
     implementation ("com.github.bumptech.glide:glide:4.12.0")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.9.1")
     // Glide v4 uses this new annotation processor -- see https://bumptech.github.io/glide/doc/generatedapi.html
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
 
