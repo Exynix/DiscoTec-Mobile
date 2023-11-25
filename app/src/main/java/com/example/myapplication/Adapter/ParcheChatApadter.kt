@@ -17,9 +17,23 @@ import de.hdodenhof.circleimageview.CircleImageView
 
 class ParcheChatApadter(private val context: Context, private val parcheList:ArrayList<Parche>) : RecyclerView.Adapter<ParcheChatApadter.ViewHolder>(){
     private lateinit var storageRef: StorageReference
+
+    private var mListener: onItemClickListener = object : onItemClickListener {
+        override fun onItemClick(position: Int) {
+            // default empty implementation
+        }
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_parche, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(view, mListener)
+    }
+
+    interface onItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(listener: onItemClickListener){
+        mListener = listener
     }
 
     override fun getItemCount(): Int {
@@ -38,9 +52,18 @@ class ParcheChatApadter(private val context: Context, private val parcheList:Arr
         //}
     }
 
-    class ViewHolder (view:View): RecyclerView.ViewHolder(view){
-        val txtParcheName:TextView = view.findViewById(R.id.Parche_name)
-        val ParcheDescripcion:TextView = view.findViewById(R.id.Parche_description)
-        val ParcheImg:ImageView = view.findViewById(R.id.parche_img)
+    class ViewHolder(view: View, private val listener: onItemClickListener) : RecyclerView.ViewHolder(view) {
+        val txtParcheName: TextView = view.findViewById(R.id.Parche_name)
+        val ParcheDescripcion: TextView = view.findViewById(R.id.Parche_description)
+        val ParcheImg: ImageView = view.findViewById(R.id.parche_img)
+
+        init {
+            view.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    listener.onItemClick(position)
+                }
+            }
+        }
     }
 }
