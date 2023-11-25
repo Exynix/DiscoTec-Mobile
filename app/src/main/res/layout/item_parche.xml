@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="60dp"
+            android:id="@+id/parche_img"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:src="@color/moradoPrincipal"
+            app:civ_border_width="1dp"
+            app:civ_border_color="@color/material_dynamic_neutral90">
+        </ImageView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/Parche_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="Parche_name"
+                android:textSize="16dp"
+                android:fontFamily="@font/poppins_bold"/>
+
+            <TextView
+                android:id="@+id/Parche_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="temp"
+                android:textSize="14dp"
+                android:fontFamily="@font/poppins"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/moradoPrincipal"/>
+
+
+</LinearLayout>

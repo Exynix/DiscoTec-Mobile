@@ -1,26 +1,27 @@
 package com.example.myapplication
 
-import android.R
-import android.app.ActionBar.LayoutParams
-import android.content.ContentValues.TAG
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.util.TypedValue
-import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.core.view.marginEnd
-import androidx.core.view.marginRight
 import androidx.core.view.setMargins
 import com.bumptech.glide.Glide
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import com.example.myapplication.databinding.ActivityDashboardBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -32,33 +33,41 @@ import com.google.firebase.storage.ktx.storage
 
 import java.util.logging.Logger
 
-class DashboardActivity : AppCompatActivity() {
+class DashboardActivity : AppCompatActivity(), SensorEventListener {
 
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var sensorManager: SensorManager
-    private var temperatureSensor: Sensor? = null
-    private lateinit var temperatureSensorListener: SensorEventListener
-    private var temperatura: Float = 0.0f
+    private var stepSensor: Sensor? = null
+    private var stepCount = 0
+    // Creating a variable which will give the running status
+    // and initially given the boolean value as false
+    private var running = false
+
+    // Creating a variable which will counts total steps
+    // and it has been given the value of 0 float
+    private var totalSteps = 0f
+
+    // Creating a variable  which counts previous total
+    // steps and it has also been given the value of 0 float
+    private var previousTotalSteps = 0f
+    private val PERMISSION_REQUEST_ACTIVITY_RECOGNITION = 1
+
 
     companion object {
         val TAG: String = DashboardActivity::class.java.name
+        val NOTIFICATION_CHANNEL_ID = "com.example.myapplication"
     }
+
     private val logger = Logger.getLogger(TAG)
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityDashboardBinding.inflate(layoutInflater)
-        // navigationMenu = binding.bottomNavigationView
         setContentView(binding.root)
 
-        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        temperatureSensor = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE)
-
-        if (temperatureSensor == null) {
-            Toast.makeText(this@DashboardActivity, "Ambient temperature sensor not available on this device", Toast.LENGTH_SHORT).show()
-        }
-
+        // ------------------- Click listeners -------------------
         binding.paginaPrincipioBtn.setOnClickListener {
             val intent = Intent(applicationContext, DashboardActivity::class.java)
             startActivity(intent)
@@ -75,7 +84,7 @@ class DashboardActivity : AppCompatActivity() {
         }
 
 
-        binding.parcheBtn.setOnClickListener{
+        binding.parcheBtn.setOnClickListener {
             val intent = Intent(applicationContext, CrearMiParcheActivity::class.java)
             startActivity(intent)
         }
@@ -84,71 +93,6 @@ class DashboardActivity : AppCompatActivity() {
             val intent = Intent(applicationContext, PerfilActivity::class.java)
             startActivity(intent)
         }
-
-        // Logica para la conexión a la realtime database, y lectura de su información
-        val database = Firebase.database
-        val myRef = database.getReference("discotecas")
-
-        myRef.get()
-        val discotecas = ArrayList<Discoteca>()
-
-        myRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                for (discotecaSnapshot in dataSnapshot.children) {
-                    // Create a new Discoteca object
-                    val discoteca = Discoteca()
-
-                    // Set the values of the Discoteca object
-                    discoteca.idDiscoteca = discotecaSnapshot.child("id").getValue(Long::class.java)!!
-
-                    discoteca.nombre =
-                        discotecaSnapshot.child("nombre").getValue(String::class.java).toString()
-
-                    discoteca.precioCover = discotecaSnapshot.child("precio_cover").getValue(Float::class.java)!!
-
-                    discoteca.ubicacion =
-                        discotecaSnapshot.child("ubicacion").getValue(String::class.java).toString()
-
-                    discoteca.descripcion =
-                        discotecaSnapshot.child("descripcion").getValue(String::class.java).toString()
-
-                    discotecas.add(discoteca)
-
-                }
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                Log.w(TAG, "Failed to read value.", databaseError.toException())
-            }
-
-        })
-
-        // Lectura de la información de cloud storage. Usado para las imágenes.
-        val storage = Firebase.storage
-        val storageReference = FirebaseStorage.getInstance().reference.child("fotos_discotecas")
-
-        storageReference.listAll().addOnSuccessListener{listResult ->
-
-            val linearLayout: LinearLayout = binding.horizontalLinearLayout
-            for (item in listResult.items) {
-                item.downloadUrl.addOnSuccessListener{
-                        imageUrl ->
-                    // Add the image to the horizontal scroll view
-                    val imageView: ImageView = ImageView(this)
-
-                    Glide.with(this).load(imageUrl.toString()).into(imageView)
-
-                    linearLayout.addView(imageView)
-                    val layoutParams = LinearLayout.LayoutParams(500, LinearLayout.LayoutParams.MATCH_PARENT)
-                    layoutParams.setMargins(50)
-                    imageView.layoutParams = layoutParams
-                    imageView.scaleType = ImageView.ScaleType.CENTER_CROP
-                    imageView.requestLayout()
-                }
-            }
-        }
-
 
         binding.mapBtn.setOnClickListener {
             val intent = Intent(applicationContext, MapsActivity::class.java)
@@ -160,85 +104,206 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        temperatureSensorListener = object : SensorEventListener {
-            override fun onSensorChanged(event: SensorEvent) {
-                temperatura = event.values[0]
+        // ------- Logica para la conexión a la realtime database, y lectura de su información -------
+        val database = Firebase.database
+        val myRef = database.getReference("discotecas")
+
+        myRef.get()
+        val oldNightClubs = ArrayList<OldNightClub>()
+
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                for (discotecaSnapshot in dataSnapshot.children) {
+                    // Create a new Discoteca object
+                    val oldNightClub = OldNightClub()
+
+                    // Set the values of the Discoteca object
+                    oldNightClub.idDiscoteca =
+                        discotecaSnapshot.child("id").getValue(Long::class.java)!!
+
+                    oldNightClub.nombre =
+                        discotecaSnapshot.child("nombre").getValue(String::class.java).toString()
+
+                    oldNightClub.precioCover =
+                        discotecaSnapshot.child("precio_cover").getValue(Float::class.java)!!
+
+                    oldNightClub.ubicacion =
+                        discotecaSnapshot.child("ubicacion").getValue(String::class.java).toString()
+
+                    oldNightClub.descripcion =
+                        discotecaSnapshot.child("descripcion").getValue(String::class.java)
+                            .toString()
+
+                    oldNightClubs.add(oldNightClub)
+
+                }
             }
-            override fun onAccuracyChanged(sensor: Sensor, i: Int) {}
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.w(TAG, "Failed to read value.", databaseError.toException())
+            }
+
+        })
+
+        // ------- Lectura de la información de cloud storage. Usado para las imágenes. -------
+        val storage = Firebase.storage
+        val storageReference = FirebaseStorage.getInstance().reference.child("fotos_discotecas")
+
+        storageReference.listAll().addOnSuccessListener { listResult ->
+
+            val linearLayout: LinearLayout = binding.horizontalLinearLayout
+            for (item in listResult.items) {
+                item.downloadUrl.addOnSuccessListener { imageUrl ->
+                    // Add the image to the horizontal scroll view
+                    val imageView: ImageView = ImageView(this)
+
+                    Glide.with(this).load(imageUrl.toString()).into(imageView)
+
+                    linearLayout.addView(imageView)
+                    val layoutParams =
+                        LinearLayout.LayoutParams(500, LinearLayout.LayoutParams.MATCH_PARENT)
+                    layoutParams.setMargins(50)
+                    imageView.layoutParams = layoutParams
+                    imageView.scaleType = ImageView.ScaleType.CENTER_CROP
+                    imageView.requestLayout()
+                }
+            }
         }
 
-        sensorManager.registerListener(
-            temperatureSensorListener,
-            temperatureSensor,
-            SensorManager.SENSOR_DELAY_NORMAL
-        )
+        // ------------------- Step Counter -------------------
 
-        binding.temperatura.setOnClickListener {
-            Toast.makeText(
-                this@DashboardActivity,
-                "La temperatura actual es de $temperatura °C",
-                Toast.LENGTH_SHORT
-            ).show()
+        // Check and request the ACTIVITY_RECOGNITION permission
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    "android.permission.ACTIVITY_RECOGNITION"
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf("android.permission.ACTIVITY_RECOGNITION"),
+                    PERMISSION_REQUEST_ACTIVITY_RECOGNITION
+                )
+            }
+        }
+
+        stepCount = 0
+
+        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+
+        stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
+        if (stepSensor == null) {
+            Toast.makeText(this, "Step counter sensor not available", Toast.LENGTH_SHORT).show()
+        }
+
+        val channel = NotificationChannel(
+            NOTIFICATION_CHANNEL_ID,
+            "TOPIC",
+            NotificationManager.IMPORTANCE_DEFAULT
+        )
+        channel.description = "DESCRIPCIÓN"
+        val notificationManager = applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        // Unregister the SensorEventListener when the activity is in the background
+        stepSensor?.let {
+            sensorManager.unregisterListener(this)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == PERMISSION_REQUEST_ACTIVITY_RECOGNITION) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted, you can now initialize the step counter
+            } else {
+                // Permission denied, handle accordingly (e.g., show a message, disable functionality)
+                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
     override fun onResume() {
         super.onResume()
-            sensorManager.registerListener(
-                temperatureSensorListener,
-                temperatureSensor,
-                SensorManager.SENSOR_DELAY_NORMAL
-            )
+        // Register the SensorEventListener when the activity is in the foreground
+        stepSensor?.let {
+            sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_NORMAL)
+        }
     }
 
-    override fun onPause() {
-        super.onPause()
-            sensorManager.unregisterListener(temperatureSensorListener)
+    override fun onSensorChanged(event: SensorEvent) {
+        // Check if the sensor type is the step counter sensor
+        if (event.sensor.type == Sensor.TYPE_STEP_COUNTER) {
+            // The event values contain the total number of steps since the last device boot
+            stepCount = event.values[0].toInt()
+
+            // Update the TextView with the current step count
+            updateStepCount()
+        }
     }
+
+    override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {
+        // Not needed for the step counter sensor, but required to implement the interface
+    }
+
+    // This method updates the TextView with the current step count
+    private fun updateStepCount() {
+        binding.pasos.text = "Steps: $stepCount"
+    }
+
+    fun resetSteps() {
+        var tv_stepsTaken = binding.pasos
+        tv_stepsTaken.setOnClickListener {
+            // This will give a toast message if the user want to reset the steps
+            Toast.makeText(this, "Long tap to reset steps", Toast.LENGTH_SHORT).show()
+        }
+
+        tv_stepsTaken.setOnLongClickListener {
+
+            previousTotalSteps = totalSteps
+
+            // When the user will click long tap on the screen,
+            // the steps will be reset to 0
+            tv_stepsTaken.text = 0.toString()
+
+            // This will save the data
+            saveData()
+
+            true
+        }
+    }
+
+    private fun saveData() {
+
+        // Shared Preferences will allow us to save
+        // and retrieve data in the form of key,value pair.
+        // In this function we will save data
+        val sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE)
+
+        val editor = sharedPreferences.edit()
+        editor.putFloat("key1", previousTotalSteps)
+        editor.apply()
+    }
+
+    private fun loadData() {
+
+        // In this function we will retrieve data
+        val sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE)
+        val savedNumber = sharedPreferences.getFloat("key1", 0f)
+
+        // Log.d is used for debugging purposes
+        Log.d("MainActivity", "$savedNumber")
+
+        previousTotalSteps = savedNumber
+    }
+
 
 }
-
-
-
-
-/*
-        binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            print("here2")
-            when (item.itemId){
-                R.id.navExplorar -> {
-                    val intent = Intent(this, DashboardActivity::class.java)
-                    print("here1")
-                    startActivity(intent)
-                    true
-                }
-
-                R.id.navBuscar -> {
-                    val intent = Intent(this, SearchActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                    true
-                }
-
-                R.id.navReservas -> {
-                    val intent = Intent(this, ReservasActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-
-                R.id.navMiParche -> {
-                    val intent = Intent(this, MiParcheActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-
-                R.id.navPerfil -> {
-                    val intent = Intent(this, PerfilActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-
-                else -> {false}
-            }
-
-        }
-*/

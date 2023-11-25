@@ -9,17 +9,14 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.cardview.widget.CardView
-import androidx.core.view.marginLeft
 import androidx.core.view.setMargins
 import com.bumptech.glide.Glide
 import com.example.myapplication.databinding.ActivityReservasBinding
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -46,30 +43,30 @@ class ReservasActivity : AppCompatActivity() {
         val myRef = database.getReference("discotecas")
 
         myRef.get()
-        val discotecas = ArrayList<Discoteca>()
+        val oldNightClubs = ArrayList<OldNightClub>()
 
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 for (discotecaSnapshot in dataSnapshot.children) {
                     // Create a new Discoteca object
-                    val discoteca = Discoteca()
+                    val oldNightClub = OldNightClub()
 
                     // Set the values of the Discoteca object
-                    discoteca.idDiscoteca = discotecaSnapshot.child("id").getValue(Long::class.java)!!
+                    oldNightClub.idDiscoteca = discotecaSnapshot.child("id").getValue(Long::class.java)!!
 
-                    discoteca.nombre =
+                    oldNightClub.nombre =
                         discotecaSnapshot.child("nombre").getValue(String::class.java).toString()
 
-                    discoteca.precioCover = discotecaSnapshot.child("precio_cover").getValue(Float::class.java)!!
+                    oldNightClub.precioCover = discotecaSnapshot.child("precio_cover").getValue(Float::class.java)!!
 
-                    discoteca.ubicacion =
+                    oldNightClub.ubicacion =
                         discotecaSnapshot.child("ubicacion").getValue(String::class.java).toString()
 
-                    discoteca.descripcion =
+                    oldNightClub.descripcion =
                         discotecaSnapshot.child("descripcion").getValue(String::class.java).toString()
 
-                    discotecas.add(discoteca)
+                    oldNightClubs.add(oldNightClub)
 
                 }
             }
@@ -127,13 +124,13 @@ class ReservasActivity : AppCompatActivity() {
 
                     val nameTextView: TextView = TextView(this)
                     linearLayout.addView(nameTextView)
-                    nameTextView.text = discotecas[i].nombre
+                    nameTextView.text = oldNightClubs[i].nombre
                     nameTextView.typeface = poppinsBoldTypeface
                     nameTextView.requestLayout()
 
                     val locationTextView: TextView = TextView(this)
                     linearLayout.addView(locationTextView)
-                    locationTextView.text = discotecas[i].ubicacion
+                    locationTextView.text = oldNightClubs[i].ubicacion
                     locationTextView.typeface = poppinsTypeface
                     locationTextView.requestLayout()
 

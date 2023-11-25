@@ -7,7 +7,6 @@ import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -44,30 +43,30 @@ class SearchActivity : AppCompatActivity() {
         val myRef = database.getReference("discotecas")
 
         myRef.get()
-        val discotecas = ArrayList<Discoteca>()
+        val oldNightClubs = ArrayList<OldNightClub>()
 
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 for (discotecaSnapshot in dataSnapshot.children) {
                     // Create a new Discoteca object
-                    val discoteca = Discoteca()
+                    val oldNightClub = OldNightClub()
 
                     // Set the values of the Discoteca object
-                    discoteca.idDiscoteca = discotecaSnapshot.child("id").getValue(Long::class.java)!!
+                    oldNightClub.idDiscoteca = discotecaSnapshot.child("id").getValue(Long::class.java)!!
 
-                    discoteca.nombre =
+                    oldNightClub.nombre =
                         discotecaSnapshot.child("nombre").getValue(String::class.java).toString()
 
-                    discoteca.precioCover = discotecaSnapshot.child("precio_cover").getValue(Float::class.java)!!
+                    oldNightClub.precioCover = discotecaSnapshot.child("precio_cover").getValue(Float::class.java)!!
 
-                    discoteca.ubicacion =
+                    oldNightClub.ubicacion =
                         discotecaSnapshot.child("ubicacion").getValue(String::class.java).toString()
 
-                    discoteca.descripcion =
+                    oldNightClub.descripcion =
                         discotecaSnapshot.child("descripcion").getValue(String::class.java).toString()
 
-                    discotecas.add(discoteca)
+                    oldNightClubs.add(oldNightClub)
 
                 }
             }
@@ -125,19 +124,19 @@ class SearchActivity : AppCompatActivity() {
 
                     val nameTextView: TextView = TextView(this)
                     linearLayout.addView(nameTextView)
-                    nameTextView.text = discotecas[i].nombre
+                    nameTextView.text = oldNightClubs[i].nombre
                     nameTextView.typeface = poppinsBoldTypeface
                     nameTextView.requestLayout()
 
                     val locationTextView: TextView = TextView(this)
                     linearLayout.addView(locationTextView)
-                    locationTextView.text = discotecas[i].ubicacion
+                    locationTextView.text = oldNightClubs[i].ubicacion
                     locationTextView.typeface = poppinsTypeface
                     locationTextView.requestLayout()
 
                     val priceTextView: TextView = TextView(this)
                     linearLayout.addView(priceTextView)
-                    priceTextView.text = discotecas[i].precioCover.toString()
+                    priceTextView.text = oldNightClubs[i].precioCover.toString()
                     priceTextView.typeface = poppinsTypeface
                     priceTextView.requestLayout()
 

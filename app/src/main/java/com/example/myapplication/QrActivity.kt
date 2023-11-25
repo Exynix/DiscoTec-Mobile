@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.graphics.Bitmap
@@ -10,6 +11,7 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
 import com.google.zxing.qrcode.QRCodeWriter
 import com.google.zxing.common.BitMatrix
+
 
 class QrActivity : AppCompatActivity() {
 
@@ -44,6 +46,10 @@ class QrActivity : AppCompatActivity() {
                     bmp.setPixel(x, y, if (bitMatrix[x, y]) 0xFF000000.toInt() else 0xFFFFFFFF.toInt())
                 }
             }
+
+//            val intent = Intent(this, DetallesReservaActivity::class.java)
+//            intent.putExtra("RESERVATION_INFO", content)
+//            startActivity(intent)
             return bmp
         } catch (e: WriterException) {
             e.printStackTrace()
