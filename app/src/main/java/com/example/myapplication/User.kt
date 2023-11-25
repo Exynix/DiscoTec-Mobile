@@ -1,4 +1,4 @@
-package com.example.myapplication.Model
+package com.example.myapplication
 
 class User {
     var key: String? = null

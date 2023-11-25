@@ -1,4 +1,4 @@
-package com.example.myapplication.Adapter
+package com.example.myapplication.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,12 +7,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.example.myapplication.Model.Parche
 import com.example.myapplication.R
-import com.google.firebase.storage.FirebaseStorage
+import com.example.myapplication.Parche
 import com.google.firebase.storage.StorageReference
-import de.hdodenhof.circleimageview.CircleImageView
 
 
 class ParcheChatApadter(private val context: Context, private val parcheList:ArrayList<Parche>) : RecyclerView.Adapter<ParcheChatApadter.ViewHolder>(){

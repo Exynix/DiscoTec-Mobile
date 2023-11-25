@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.Model.ChatMessage
+import com.example.myapplication.model.Message
 import com.example.myapplication.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -13,7 +13,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class MessageAdapter(private val context: Context, private val messageList: ArrayList<ChatMessage>) : RecyclerView.Adapter<MessageAdapter.ViewHolder>() {
+class MessageAdapter(private val context: Context, private val messageList: ArrayList<Message>) : RecyclerView.Adapter<MessageAdapter.ViewHolder>() {
 
     private val MESSAGE_TYPE_LEFT = 0
     private val MESSAGE_TYPE_RIGHT = 1
@@ -27,9 +27,9 @@ class MessageAdapter(private val context: Context, private val messageList: Arra
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val message: ChatMessage = messageList[position]
+        val message: Message = messageList[position]
         holder.messageText.text = message.message
-        holder.messageUser.text = message.userName
+        //holder.messageUser.text = message.userName
         // Puedes añadir más lógica aquí si necesitas
     }
 
@@ -39,7 +39,7 @@ class MessageAdapter(private val context: Context, private val messageList: Arra
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val messageText: TextView = view.findViewById(R.id.tvMessage)
-        val messageUser: TextView = view.findViewById(R.id.usuario)
+        //val messageUser: TextView = view.findViewById(R.id.usuario)
         // Añade más vistas aquí si es necesario
     }
 

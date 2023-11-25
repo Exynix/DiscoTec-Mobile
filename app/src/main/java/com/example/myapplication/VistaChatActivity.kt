@@ -6,8 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myapplication.Model.ChatMessage
-import com.example.myapplication.databinding.ActivityChatMenuBinding
+import com.example.myapplication.model.Message
 import com.example.myapplication.databinding.ActivityVistaChatBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -20,7 +19,7 @@ class VistaChatActivity : AppCompatActivity() {
     private lateinit var binding: ActivityVistaChatBinding
     var dbRef2: DatabaseReference?=null
     private lateinit var messageAdapter: MessageAdapter
-    private var messageList = ArrayList<ChatMessage>()
+    private var messageList = ArrayList<Message>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVistaChatBinding.inflate(layoutInflater)
@@ -87,7 +86,7 @@ class VistaChatActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 messageList.clear() // Limpiar la lista para evitar duplicados
                 for (snapshot in dataSnapshot.children) {
-                    val message = snapshot.getValue(ChatMessage::class.java)
+                    val message = snapshot.getValue(Message::class.java)
                     message?.let { messageList.add(it) }
                 }
                 messageAdapter.notifyDataSetChanged() // Notificar al adaptador del cambio
@@ -104,7 +103,7 @@ class VistaChatActivity : AppCompatActivity() {
         binding.send.setOnClickListener {
             val messageText = binding.msg.text.toString()
             if (messageText.isNotEmpty() && nombre != null) {
-                val chatMessage = ChatMessage(messageText, nombre!!)
+                val chatMessage = Message(messageText, nombre!!)
                 dbRef2!!.push().setValue(chatMessage)
             }
         }

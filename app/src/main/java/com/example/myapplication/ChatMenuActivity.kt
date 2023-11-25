@@ -3,16 +3,11 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.renderscript.ScriptGroup.Binding
-import android.util.Log
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.Adapter.ParcheChatApadter
-import com.example.myapplication.Model.Parche
+import com.example.myapplication.adapter.ParcheChatApadter
 import com.example.myapplication.databinding.ActivityChatMenuBinding
-import com.example.myapplication.databinding.ActivityDashboardBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

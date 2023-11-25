@@ -17,7 +17,6 @@ import androidx.cardview.widget.CardView
 import androidx.core.view.setMargins
 import com.bumptech.glide.Glide
 import com.example.myapplication.databinding.ActivityReservasBinding
-import com.example.myapplication.model.OldNightClub
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener

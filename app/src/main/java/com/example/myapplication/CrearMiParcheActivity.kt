@@ -5,12 +5,10 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.database.Cursor
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
-import android.provider.ContactsContract
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.ImageView
@@ -18,10 +16,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myapplication.Model.Parche
-import com.example.myapplication.Model.User
 import com.example.myapplication.adapter.ParceroAdapter
 import com.example.myapplication.databinding.ActivityCrearMiParcheBinding
 import com.google.android.material.snackbar.Snackbar
@@ -32,7 +27,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import org.json.JSONObject
 import java.io.File
 import java.io.IOException
 import java.text.DateFormat
