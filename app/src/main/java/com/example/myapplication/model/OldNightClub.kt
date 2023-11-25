@@ -1,6 +1,6 @@
-package com.example.myapplication
+package com.example.myapplication.model
 
-class Discoteca {
+class OldNightClub {
 
     public var idDiscoteca: Long = 0
     public  var nombre: String = "empty"
