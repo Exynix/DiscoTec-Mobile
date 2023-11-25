@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.model.Parche
 import com.example.myapplication.databinding.ActivityChatMenuBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -16,7 +17,7 @@ import com.google.firebase.database.ValueEventListener
 class ChatMenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChatMenuBinding
     private lateinit var dbRef: DatabaseReference
-    private val parcheList2 = ArrayList<parcheModel>() // Lista para almacenar los objetos Parche
+    private val parcheList2 = ArrayList<Parche>() // Lista para almacenar los objetos Parche
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,13 +50,13 @@ class ChatMenuActivity : AppCompatActivity() {
                     parchesIdList.forEach { parcheId ->
                         dbRef2.child(parcheId).addListenerForSingleValueEvent(object : ValueEventListener {
                             override fun onDataChange(snapshot: DataSnapshot) {
-                                val parche = snapshot.getValue(parcheModel::class.java)
+                                val parche = snapshot.getValue(Parche::class.java)
                                 parche?.let {
-                                    var parche = parcheModel(it.Nombre, it.Descripcion, it.Img)
+                                    var parche = Parche(it.Nombre, it.Descripcion, it.Img)
                                     parcheList2.add(parche)
+                                    parcheAdapter = ParcheChatApadter(this, parcheList2)
                                     parcheAdapter.notifyDataSetChanged()
                                     // Resto del código de configuración de botones...
-                                    parcheAdapter = ParcheChatApadter(this, parcheList2)
                                     binding.recyclerView.adapter = parcheAdapter
                                 }
                             }
