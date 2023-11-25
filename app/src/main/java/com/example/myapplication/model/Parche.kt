@@ -9,6 +9,5 @@ class Parche constructor(
     var imageUrl: String,
     var description: String,
     var chat: Chat
-
 ) {
 }
