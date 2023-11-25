@@ -124,6 +124,10 @@ class CrearMiParcheActivity : AppCompatActivity() {
             startActivity(intent)
         }
         setup()
+        mAuth = FirebaseAuth.getInstance()
+        val user = mAuth.currentUser
+        val idUsuario = user?.uid
+        crearLista(idUsuario)
     }
 
     private fun crearLista(idUsuario: String?) {
@@ -158,9 +162,8 @@ class CrearMiParcheActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
-        val parceros: List<JSONObject> = listOf(JSONObject("""{"name": "Juan", "photo": ""}"""), JSONObject("""{"name": "Pedro", "photo": ""}"""), JSONObject("""{"name": "Pablo", "photo": ""}"""))
         binding.listaContactos.layoutManager = LinearLayoutManager(this)
-        binding.listaContactos.adapter = ParceroAdapter(parceros)
+        binding.listaContactos.adapter = ParceroAdapter(usuariosActivos)
     }
 
     private fun verifyPermissionsCam(context: Context, permission: String, rationale: String) {
