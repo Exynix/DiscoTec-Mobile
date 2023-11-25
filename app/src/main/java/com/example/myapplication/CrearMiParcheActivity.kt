@@ -120,7 +120,7 @@ class CrearMiParcheActivity : AppCompatActivity() {
 
 
         binding.parcheBtn.setOnClickListener{
-            val intent = Intent(applicationContext, CrearMiParcheActivity::class.java)
+            val intent = Intent(applicationContext, ChatMenuActivity::class.java)
             startActivity(intent)
         }
 
