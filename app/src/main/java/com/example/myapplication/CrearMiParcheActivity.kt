@@ -13,14 +13,16 @@ import android.os.Environment
 import android.provider.ContactsContract
 import android.provider.MediaStore
 import android.util.Log
-import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.adapter.ParceroAdapter
 import com.example.myapplication.databinding.ActivityCrearMiParcheBinding
 import com.google.android.material.snackbar.Snackbar
+import org.json.JSONObject
 import java.io.File
 import java.io.IOException
 import java.text.DateFormat
@@ -37,20 +39,9 @@ class CrearMiParcheActivity : AppCompatActivity() {
     private val getSimplePermission = registerForActivityResult(
         ActivityResultContracts.RequestPermission()) {
         updateUICamara(it)
-        updateUIContact(it)
-
     }
-    val projection = arrayOf(
-        ContactsContract.Contacts._ID,
-        ContactsContract.Contacts.DISPLAY_NAME_PRIMARY,
-        ContactsContract.Contacts.STARRED,
-        ContactsContract.Contacts.PHOTO_URI)
-    var pictureImagePath: Uri? = null
+    private var pictureImagePath: Uri? = null
     //var imageViewContainer: ImageView? = null
-    val filter = "${ContactsContract.Contacts.DISPLAY_NAME_PRIMARY} IS NOT NULL"
-    val order = "${ContactsContract.Contacts.DISPLAY_NAME_PRIMARY} COLLATE NOCASE"
-    lateinit var adapter: ContactInfoAdapterActivity
-
 
     private val cameraActivityResultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()) { result ->
@@ -82,26 +73,16 @@ class CrearMiParcheActivity : AppCompatActivity() {
 
         binding = ActivityCrearMiParcheBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.listaContactos.isVisible = false
        // imageViewContainer = binding.imageView
 
         binding.camera.setOnClickListener {
             logger.info("Se va a solicitar el permiso")
-            verifyPermissionsCam(this, android.Manifest.permission.CAMERA, "El permiso es requerido para acceder a la camara")
+            verifyPermissionsCam(this, Manifest.permission.CAMERA, "El permiso es requerido para acceder a la camara")
         }
         binding.gallery.setOnClickListener {
             val pickGalleryImage = Intent(Intent.ACTION_PICK)
             pickGalleryImage.type = "image/*"
             galleryActivityResultLauncher.launch(pickGalleryImage)
-        }
-        binding.addParcero.setOnClickListener {
-            adapter = ContactInfoAdapterActivity(this, null)
-            binding.listaContactos.adapter = adapter
-            verifyPermissionsCon(this, android.Manifest.permission.READ_CONTACTS, "El permiso es requerido para acceder a los contactos")
-            binding.listaContactos.isVisible = true
-            binding.addParcero.isVisible = false
-
         }
         binding.paginaPrincipioBtn.setOnClickListener {
             val intent = Intent(applicationContext, DashboardActivity::class.java)
@@ -118,7 +99,6 @@ class CrearMiParcheActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         binding.parcheBtn.setOnClickListener{
             val intent = Intent(applicationContext, ChatMenuActivity::class.java)
             startActivity(intent)
@@ -128,11 +108,19 @@ class CrearMiParcheActivity : AppCompatActivity() {
             val intent = Intent(applicationContext, PerfilActivity::class.java)
             startActivity(intent)
         }
-        binding.chat.setOnClickListener {
-            val intent = Intent(applicationContext, ChatMenuActivity::class.java)
-            startActivity(intent)
-        }
+        setup()
     }
+
+    private fun setup() {
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView() {
+        val parceros: List<JSONObject> = listOf(JSONObject("""{"name": "Juan", "photo": ""}"""), JSONObject("""{"name": "Pedro", "photo": ""}"""), JSONObject("""{"name": "Pablo", "photo": ""}"""))
+        binding.listaContactos.layoutManager = LinearLayoutManager(this)
+        binding.listaContactos.adapter = ParceroAdapter(parceros)
+    }
+
     private fun verifyPermissionsCam(context: Context, permission: String, rationale: String) {
         when {
             ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED -> {
@@ -165,42 +153,6 @@ class CrearMiParcheActivity : AppCompatActivity() {
             dipatchTakePictureIntent()
         }else{
             logger.warning("Permission denied")
-        }
-    }
-    private fun verifyPermissionsCon(context: Context, permission: String, rationale: String) {
-        when {
-            ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED -> {
-                Snackbar.make(binding.root, "Ya tengo los permisos 😜", Snackbar.LENGTH_LONG).show()
-                updateUIContact(true)
-                binding.listaContactos.isVisible = true
-                binding.addParcero.isVisible = false
-            }
-            shouldShowRequestPermissionRationale(permission) -> {
-                // Mostramos un snackbar con la justificación del permiso y una vez desaparezca volvemos a solicitarlo
-                val snackbar = Snackbar.make(binding.root, rationale, Snackbar.LENGTH_LONG)
-                snackbar.addCallback(object : Snackbar.Callback() {
-                    override fun onDismissed(snackbar: Snackbar, event: Int) {
-                        if (event == DISMISS_EVENT_TIMEOUT) {
-                            getSimplePermission.launch(permission)
-                        }
-                    }
-                })
-                snackbar.show()
-            }
-            else -> {
-                getSimplePermission.launch(permission)
-            }
-        }
-    }
-    fun updateUIContact(permission : Boolean) {
-        if(permission){
-            //granted
-            Log.i("Permission: ", "Granted")
-            // Assigning a cursor to init the adapter
-            val cursor: Cursor? = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, projection, filter, null, order)
-            adapter.changeCursor(cursor)
-        }else{
-            Log.i("Permission: ", "Denied")
         }
     }
     fun dipatchTakePictureIntent() {
