@@ -29,12 +29,13 @@
             tools:text="farhan" />
 
         <TextView
+            android:id="@+id/usuario"
             android:layout_width="369dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
+            android:layout_marginRight="12dp"
             android:fontFamily="@font/poppins_bold"
             android:text="Laura"
-            android:layout_marginRight="12dp"
             android:textAlignment="textEnd" />
 
 

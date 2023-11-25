@@ -1,5 +1,7 @@
 package com.example.myapplication
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -16,7 +18,9 @@ import android.widget.LinearLayout
 import androidx.core.view.setMargins
 import com.bumptech.glide.Glide
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.example.myapplication.databinding.ActivityDashboardBinding
 import com.google.firebase.database.DataSnapshot
@@ -51,10 +55,12 @@ class DashboardActivity : AppCompatActivity(), SensorEventListener {
 
     companion object {
         val TAG: String = DashboardActivity::class.java.name
+        val NOTIFICATION_CHANNEL_ID = "com.example.myapplication"
     }
 
     private val logger = Logger.getLogger(TAG)
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -191,8 +197,14 @@ class DashboardActivity : AppCompatActivity(), SensorEventListener {
             Toast.makeText(this, "Step counter sensor not available", Toast.LENGTH_SHORT).show()
         }
 
-
-
+        val channel = NotificationChannel(
+            NOTIFICATION_CHANNEL_ID,
+            "TOPIC",
+            NotificationManager.IMPORTANCE_DEFAULT
+        )
+        channel.description = "DESCRIPCIÓN"
+        val notificationManager = applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
     }
 
     override fun onPause() {

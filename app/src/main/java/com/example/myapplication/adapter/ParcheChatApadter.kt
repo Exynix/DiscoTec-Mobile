@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.Parche
+import com.example.myapplication.model.Parche
 import com.google.firebase.storage.StorageReference
 
 

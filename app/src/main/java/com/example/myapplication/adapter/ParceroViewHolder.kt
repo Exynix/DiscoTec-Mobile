@@ -5,7 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.databinding.InfoUsuarioBinding
-import com.example.myapplication.User
+import com.example.myapplication.model.User
 
 class ParceroViewHolder (view: View) : RecyclerView.ViewHolder(view) {
 

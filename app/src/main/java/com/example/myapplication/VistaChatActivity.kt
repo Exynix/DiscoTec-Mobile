@@ -1,12 +1,17 @@
 package com.example.myapplication
 
 import MessageAdapter
+import android.Manifest
+import android.app.PendingIntent
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myapplication.model.Message
 import com.example.myapplication.databinding.ActivityVistaChatBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -20,6 +25,7 @@ class VistaChatActivity : AppCompatActivity() {
     var dbRef2: DatabaseReference?=null
     private lateinit var messageAdapter: MessageAdapter
     private var messageList = ArrayList<Message>()
+    val CHANNEL_ID = "com.example.myapplication"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVistaChatBinding.inflate(layoutInflater)
@@ -105,6 +111,41 @@ class VistaChatActivity : AppCompatActivity() {
             if (messageText.isNotEmpty() && nombre != null) {
                 val chatMessage = Message(messageText, nombre!!)
                 dbRef2!!.push().setValue(chatMessage)
+            }
+
+            val mBuilder: NotificationCompat.Builder =
+                NotificationCompat.Builder(
+                    applicationContext,
+                    CHANNEL_ID
+                )
+            mBuilder.setContentTitle("Discotec")
+                .setSmallIcon(R.drawable.icono_reservas)
+                .setContentText(messageText)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+            val intent = Intent(applicationContext,
+                VistaChatActivity::class.java)
+                .apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or
+                            Intent.FLAG_ACTIVITY_CLEAR_TASK
+                }
+            val pendingIntent = PendingIntent.getActivity(
+                applicationContext,
+                0,
+                intent,
+                PendingIntent.FLAG_IMMUTABLE)
+// Set the intent that fires when the user taps the
+// notification.
+            mBuilder.setContentIntent(pendingIntent)
+// Removes notification when touching it
+            mBuilder.setAutoCancel(true)
+            val notifId = 10
+            val notificationManager =
+                NotificationManagerCompat.from(applicationContext)
+            if (ContextCompat.checkSelfPermission(applicationContext,
+                    Manifest.permission.POST_NOTIFICATIONS) ==
+                PackageManager.PERMISSION_GRANTED) {
+                notificationManager.notify(notifId, mBuilder.build())
             }
         }
 

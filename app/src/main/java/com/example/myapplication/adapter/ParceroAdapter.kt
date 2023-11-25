@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.User
+import com.example.myapplication.model.User
 
 class ParceroAdapter(private val parceros: List<User>, private val parcerosSeleccionados: MutableList<User>) : RecyclerView.Adapter<ParceroViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParceroViewHolder {
