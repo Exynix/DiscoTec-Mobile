@@ -14,12 +14,17 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import com.example.myapplication.model.User
 import com.example.myapplication.databinding.ActivitySignUpBinding
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.io.File
 import java.io.IOException
@@ -32,6 +37,9 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
 
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var dbRef: DatabaseReference
+
+    private lateinit var user: User
 
     private lateinit var loginBtn: Button
     private lateinit var signUpBtn: Button
@@ -68,6 +76,7 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         mAuth = Firebase.auth
+        dbRef = Firebase.database.reference.child("users")
 
         loginBtn = binding.gotoLoginBtn
         signUpBtn = binding.signUpBtn
@@ -131,15 +140,34 @@ class SignUpActivity : AppCompatActivity() {
         }
         mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
-                val user = mAuth.currentUser
-                Toast.makeText(
-                    this@SignUpActivity,
-                    String.format("The user %s is successfully registered", user!!.email),
-                    Toast.LENGTH_LONG
-                ).show()
+                saveUserData {
+                    // Ir a la pantalla de inicio
+                    val homeIntent = Intent(this, DashboardActivity::class.java)
+                    Snackbar.make(this.findViewById(android.R.id.content), "Usuario creado con éxito", Snackbar.LENGTH_LONG).show()
+                    startActivity(homeIntent)
+                }
             }
         }.addOnFailureListener(this) { e ->
             Toast.makeText(this@SignUpActivity, e.message, Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun saveUserData(onSuccessListener: OnSuccessListener<Void>? = null) {
+        user = User()
+        if (mAuth.currentUser == null) {
+            showAlert()
+            return
+        }
+        val userId = mAuth.currentUser?.uid.toString()
+        user.key = userId
+        user.nombre = binding.nombreInput.text.toString()
+        user.correo = binding.emailInput.text.toString()
+        user.nroId = binding.cedulaInput.text.toString().toLong()
+
+        dbRef.child(userId).setValue(user).addOnCompleteListener {
+            onSuccessListener?.onSuccess(null)
+        }.addOnFailureListener {err ->
+            Toast.makeText(this,"Error: ${err.message}", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -207,5 +235,14 @@ class SignUpActivity : AppCompatActivity() {
         val imageFileName = "${timeStamp}.jpg"
         val imageFile = File(getExternalFilesDir(Environment.DIRECTORY_PICTURES),imageFileName)
         return imageFile
+    }
+
+    private fun showAlert() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("ERROR")
+        builder.setMessage("Se ha producido un error autenticando al usuario")
+        builder.setPositiveButton("Aceptar",null)
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
     }
 }

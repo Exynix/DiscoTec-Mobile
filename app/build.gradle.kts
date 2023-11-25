@@ -85,4 +85,8 @@ dependencies {
     coreLibraryDesugaring ("com.android.tools:desugar_jdk_libs:1.1.5")
     // BioMetri
     implementation("androidx.biometric:biometric:1.2.0-alpha03")
+
+    // circle imageview library
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+
 }

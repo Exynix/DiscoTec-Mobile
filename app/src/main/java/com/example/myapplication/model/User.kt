@@ -1,9 +1,22 @@
 package com.example.myapplication.model
 
-import com.example.myapplication.lookupTableClasses.UserType
-import com.google.firebase.auth.FirebaseUser
-import java.sql.Timestamp
+class User {
+    var key: String? = null
+    var nombre: String = ""
+    var nroId: Long = 0
+    var correo: String = ""
+    var longitud: Double =0.0
+    var latitud: Double =0.0
 
+    constructor(nombre: String, nroId: Long, correo: String, longitud: Double, latitud: Double) {
+        this.nombre = nombre
+        this.nroId = nroId
+        this.correo = correo
+        this.longitud = longitud
+        this.latitud = latitud
+    }
+
+/*<<<<<<< HEAD
 class User constructor(
     firebaseUser: FirebaseUser,
     name: String,
@@ -22,4 +35,9 @@ class User constructor(
     var latitud: Double = 0.0
     var longitud: Double = 0.0
 
+=======
+    constructor()
+
+
+>>>>>>> 95db9e3659860dad0fdbe8dc110678012d81295c*/
 }

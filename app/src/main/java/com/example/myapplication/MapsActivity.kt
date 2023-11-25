@@ -22,7 +22,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.myapplication.databinding.ActivityMapsBinding
-import com.example.myapplication.lookupTableClasses.UserType
 import com.example.myapplication.model.User
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
@@ -45,6 +44,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
@@ -56,7 +56,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 import java.util.logging.Logger
-import com.google.firebase.database.DatabaseError
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -117,6 +116,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Initialize the sensors
         sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
         lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)!!
+
+        val listaRecibida = intent.getSerializableExtra("LISTA_DATOS") as? ArrayList<User>
 
         // Initialize the listener
         lightSensorListener = object : SensorEventListener {
