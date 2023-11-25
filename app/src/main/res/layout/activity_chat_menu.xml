@@ -41,20 +41,23 @@
         android:layout_width="371dp"
         android:layout_height="74dp"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="24dp"
         android:background="#2F0040"
         android:orientation="horizontal"
         android:padding="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/parche">
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parche"
+        app:layout_constraintVertical_bias="0.0">
 
         <EditText
             android:id="@+id/editTextText2"
             android:layout_width="234dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/poppins_bold"
             android:ems="10"
+            android:fontFamily="@font/poppins_bold"
             android:hint="Buscar uno de tus parches"
             android:inputType="text"
             android:textColorHint="#FFFFFF" />
@@ -63,63 +66,24 @@
             android:id="@+id/imageView10"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:scaleType="centerInside"
             android:layout_weight="1"
             android:paddingTop="5dp"
+            android:scaleType="centerInside"
             android:src="@drawable/lupa"
             app:tint="#FFFFFF" />
     </LinearLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="408dp"
-        android:layout_height="454dp"
-        android:layout_marginBottom="4dp"
-        android:background="#6F2C7C"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.219"></androidx.recyclerview.widget.RecyclerView>
 
-        <Button
-            android:id="@+id/usuario1"
-            android:layout_width="370dp"
-            android:layout_height="108dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#E58CF6"
-            android:drawableRight="@drawable/noti"
-            android:text="Jhon Abraham"
-            android:textAlignment="viewStart"
-            android:fontFamily="@font/poppins_bold"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:cornerRadius="20dp"
-            app:icon="@drawable/icono_perfil"
-            app:iconSize="60dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/usuario2"
-            android:layout_width="370dp"
-            android:layout_height="108dp"
-            android:layout_marginTop="36dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="#E58CF6"
-            android:drawableRight="@drawable/noti"
-            android:text="Aquiles"
-            android:fontFamily="@font/poppins_bold"
-            android:textAlignment="viewStart"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:cornerRadius="20dp"
-            app:icon="@drawable/icono_perfil"
-            app:iconSize="60dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usuario1" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"

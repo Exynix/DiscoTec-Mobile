@@ -130,6 +130,27 @@
                 android:layout_weight="0.5" />
 
             <EditText
+                android:id="@+id/nombreInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:background="@android:color/holo_purple"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:fontFamily="@font/poppins"
+                android:hint="nombre"
+                android:inputType="textEmailAddress"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:textColorHint="@android:color/darker_gray" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5" />
+
+            <EditText
                 android:id="@+id/cedulaInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

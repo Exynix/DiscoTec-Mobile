@@ -76,4 +76,8 @@ dependencies {
 
     // BioMetri
     implementation("androidx.biometric:biometric:1.2.0-alpha03")
+
+    // circle imageview library
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+
 }
