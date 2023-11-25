@@ -33,9 +33,11 @@ android {
         }
     }
     compileOptions {
+       // coreLibraryDesugaringEnabled true
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -56,12 +58,16 @@ dependencies {
     implementation("com.google.firebase:firebase-auth-ktx:22.1.2")
     implementation("com.google.firebase:firebase-database-ktx")
     implementation("com.google.firebase:firebase-storage-ktx")
-    //implementation ("com.google.zxing:core:3.4.1")
-    //implementation ("com.journeyapps:zxing-android-embedded:4.0.0")
+    //implementation ("com.google.zxing:core:3.4.0")
+   //implementation ("me.dm7.barcodescanner:zxing:1.9.13")
+
+
 
     // Display de imagenes
     implementation ("com.github.bumptech.glide:glide:4.12.0")
     // Glide v4 uses this new annotation processor -- see https://bumptech.github.io/glide/doc/generatedapi.html
+
+
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
 
 
@@ -75,7 +81,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
     //QR
     implementation("com.google.zxing:core:3.4.1") // Puedes verificar la última versión en el repositorio de Maven
-
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
+    coreLibraryDesugaring ("com.android.tools:desugar_jdk_libs:1.1.5")
     // BioMetri
     implementation("androidx.biometric:biometric:1.2.0-alpha03")
 }

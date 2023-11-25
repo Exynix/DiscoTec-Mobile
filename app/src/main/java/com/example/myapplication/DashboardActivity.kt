@@ -6,14 +6,14 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.setMargins
 import com.bumptech.glide.Glide
-import android.widget.Toast
 import com.example.myapplication.databinding.ActivityDashboardBinding
 import com.example.myapplication.model.OldNightClub
 import com.google.firebase.database.DataSnapshot
@@ -23,7 +23,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
-
+import com.google.zxing.integration.android.IntentIntegrator
 import java.util.logging.Logger
 
 class DashboardActivity : AppCompatActivity() {
@@ -37,8 +37,10 @@ class DashboardActivity : AppCompatActivity() {
 
     companion object {
         val TAG: String = DashboardActivity::class.java.name
+        const val REQUEST_CODE_SCAN = 123
     }
     private val logger = Logger.getLogger(TAG)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,6 +84,13 @@ class DashboardActivity : AppCompatActivity() {
         binding.perfilBtn.setOnClickListener {
             val intent = Intent(applicationContext, PerfilActivity::class.java)
             startActivity(intent)
+        }
+        binding.scanButton.setOnClickListener {
+            // Lanza la actividad de escaneo
+            /*val intent = Intent(applicationContext, ScannerActivity::class.java)
+            intent.putExtra("Codigo", REQUEST_CODE_SCAN)
+            startActivity(intent)*/
+            initScanner()
         }
 
         // Logica para la conexión a la realtime database, y lectura de su información
@@ -169,6 +178,9 @@ class DashboardActivity : AppCompatActivity() {
 
                     // Mostrar el número de pasos en un TextView
                     binding.pasos.text = "$stepCount"
+                    println("$stepCount")
+                    // Imprimir el número de pasos en el Logcat
+                    Log.d(TAG, "Número de pasos: $stepCount")
                 }
             }
             override fun onAccuracyChanged(sensor: Sensor, i: Int) {}
@@ -186,6 +198,48 @@ class DashboardActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
         }*/
+    }
+
+    private fun initScanner() {
+       val integrator =  IntentIntegrator(this)
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
+        integrator.setPrompt("Escanea aquí tu reserva")
+        integrator.setBeepEnabled(true)
+        integrator.initiateScan()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        Log.d("TuApp", "Entrando en onActivityResult")
+
+        super.onActivityResult(requestCode, resultCode, data)
+        val result = IntentIntegrator.parseActivityResult(requestCode,resultCode, data )
+        if (requestCode == IntentIntegrator.REQUEST_CODE && resultCode == RESULT_OK) {
+            if (result != null) {
+                if (result.contents == null) {
+                    Toast.makeText(this, "Cancelado", Toast.LENGTH_SHORT).show()
+                } else {
+                    //Toast.makeText(this, "${result.contents}", Toast.LENGTH_LONG).show()
+                    /*val intent = Intent(this, DetallesReservaActivity::class.java)
+               // intent.putExtra("RESERVATION_INFO", result.contents.toString() )
+                startActivity(intent)*/
+
+                  /*  val intent = Intent(this@DashboardActivity, DetallesReservaActivity::class.java)
+                    intent.putExtra("RESERVATION_INFO", result.contents.toString())
+                    startActivity(intent)*/
+                    Log.d("TuApp", "Resultado del escaneo: $resultCode")
+                    handleQRCodeResult(result.contents)
+                }
+            } else {
+
+            }
+        }
+    }
+    private fun handleQRCodeResult(contents: String) {
+        Toast.makeText(this, contents, Toast.LENGTH_LONG).show()
+        val intent = Intent(this, DetallesReservaActivity::class.java)
+        intent.putExtra("RESERVATION_INFO", contents)
+        Log.d("TuApp", "Datos del Intent: ${contents}")
+        startActivity(intent)
     }
 
     override fun onResume() {

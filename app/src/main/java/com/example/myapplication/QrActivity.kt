@@ -1,16 +1,13 @@
 package com.example.myapplication
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.graphics.Bitmap
-import android.widget.ImageView
-import com.example.myapplication.databinding.ActivityPerfilBinding
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityQrBinding
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
-import com.google.zxing.qrcode.QRCodeWriter
 import com.google.zxing.common.BitMatrix
+import com.google.zxing.qrcode.QRCodeWriter
 
 
 class QrActivity : AppCompatActivity() {
@@ -43,13 +40,13 @@ class QrActivity : AppCompatActivity() {
             val bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565)
             for (x in 0 until width) {
                 for (y in 0 until height) {
-                    bmp.setPixel(x, y, if (bitMatrix[x, y]) 0xFF000000.toInt() else 0xFFFFFFFF.toInt())
+                    bmp.setPixel(
+                        x,
+                        y,
+                        if (bitMatrix[x, y]) 0xFF000000.toInt() else 0xFFFFFFFF.toInt()
+                    )
                 }
             }
-
-            val intent = Intent(this, DetallesReservaActivity::class.java)
-            intent.putExtra("RESERVATION_INFO", content)
-            startActivity(intent)
             return bmp
         } catch (e: WriterException) {
             e.printStackTrace()
