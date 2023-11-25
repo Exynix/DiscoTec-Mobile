@@ -17,7 +17,6 @@ class ParceroViewHolder (view: View) : RecyclerView.ViewHolder(view) {
         binding.contactName.text = parcero.getString("name")
         var selected = false
         binding.buttonPhone.setOnClickListener {
-            Toast.makeText(binding.root.context, "Llamando a ${parcero.getString("name")}", Toast.LENGTH_SHORT).show()
             selected = !selected
             if (selected) {
                 binding.buttonPhone.text = "Eliminar"

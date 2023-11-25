@@ -14,14 +14,23 @@ import android.provider.ContactsContract
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.Model.User
 import com.example.myapplication.adapter.ParceroAdapter
 import com.example.myapplication.databinding.ActivityCrearMiParcheBinding
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import org.json.JSONObject
 import java.io.File
 import java.io.IOException
@@ -32,6 +41,12 @@ import java.util.logging.Logger
 class CrearMiParcheActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCrearMiParcheBinding
+
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var dbRef: DatabaseReference
+
+    val usuariosActivos = mutableListOf<User>()
+
     companion object {
         val TAG: String = CrearMiParcheActivity::class.java.name
     }
@@ -111,7 +126,34 @@ class CrearMiParcheActivity : AppCompatActivity() {
         setup()
     }
 
+    private fun crearLista(idUsuario: String?) {
+        dbRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                usuariosActivos.clear()
+                for (userSnapshot in dataSnapshot.children) {
+                    val usuario = userSnapshot.getValue(User::class.java)
+                    if (usuario != null && usuario.key != idUsuario) {
+                        val nombre = usuario.nombre
+                        val correo = usuario.correo
+                        val nroId = usuario.nroId
+                        // Haz algo con el nombre y el correo electrónico, como mostrarlos en tu ListView
+                        usuariosActivos.add(User(nombre, nroId, correo))
+                    }
+                }
+                if (usuariosActivos.isNotEmpty()) {
+                    initRecyclerView()
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Maneja errores si es necesario
+                Toast.makeText(this@CrearMiParcheActivity, "Error", Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
     private fun setup() {
+        dbRef = Firebase.database.reference.child("users")
         initRecyclerView()
     }
 
